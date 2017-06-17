@@ -6,7 +6,14 @@
   "scripts": {
     "test": "mocha --recursive './**/*.test.js'",
     "test:cov": "nyc npm test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "keywords": [
     "webpagetest"
@@ -16,9 +23,12 @@
   "devDependencies": {
     "eslint": "^4.0.0",
     "eslint-plugin-json": "^1.2.0",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
     "mocha": "^3.4.2",
     "node-mocks-http": "^1.6.3",
-    "nyc": "^11.0.2"
+    "nyc": "^11.0.2",
+    "prettier": "^1.4.4"
   },
   "dependencies": {
     "express": "^4.15.3"
