@@ -4,7 +4,7 @@
   "description": "UI for WebPagetest",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive './**/*.test.js'",
+    "test": "mocha --recursive './**/*.spec.js'",
     "test:cov": "nyc npm test",
     "lint": "eslint .",
     "precommit": "lint-staged"
