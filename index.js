@@ -1,8 +1,17 @@
 const express = require("express");
-const exampleRouter = require("./routes/example");
 
 const app = express();
 
-app.use("/example", exampleRouter);
+function init(config = {}) {
+  app.locals.config = config;
+}
 
-app.listen(3000);
+function start() {
+  const port = app.locals.config.port || 3000;
+  app.listen(port);
+}
+
+module.exports = {
+  init,
+  start
+};
