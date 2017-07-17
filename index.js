@@ -1,6 +1,6 @@
 const express = require("express");
 const logger = require("./util/logger");
-const wptRouter = require("./routes/wpt-tests");
+const wptRouter = require("./routes/wpt");
 
 const app = express();
 app.use("/api/tests", wptRouter);
