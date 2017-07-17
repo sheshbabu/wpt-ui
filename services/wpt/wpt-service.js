@@ -5,9 +5,10 @@ async function runTest(config) {
   const RUN_TEST_URL = "http://www.webpagetest.org/runtest.php";
   const params = getWptParams(config);
   try {
-    await axios.get(RUN_TEST_URL, { params });
+    const response = await axios.get(RUN_TEST_URL, { params });
+    logger.info({ res: response });
   } catch (e) {
-    logger.error({ e });
+    logger.error({ err: e });
   }
 }
 
