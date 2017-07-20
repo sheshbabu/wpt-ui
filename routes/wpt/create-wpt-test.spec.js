@@ -28,7 +28,7 @@ function mockResponse() {
 describe("createWptTest", () => {
   let createWptTest, req, res, runTestStub;
 
-  before(() => {
+  beforeEach(() => {
     req = mockRequest();
     res = mockResponse();
     runTestStub = sinon.stub();
@@ -37,6 +37,13 @@ describe("createWptTest", () => {
         runTest: runTestStub
       }
     });
+  });
+
+  afterEach(() => {
+    req = null;
+    res = null;
+    runTestStub = null;
+    createWptTest = null;
   });
 
   it("should return 200 for POST /api/tests", () => {
