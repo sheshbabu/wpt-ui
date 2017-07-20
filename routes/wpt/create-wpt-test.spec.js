@@ -25,7 +25,7 @@ function mockResponse() {
   return res;
 }
 
-describe("Create WPT Test Route Handler", () => {
+describe("createWptTest", () => {
   let createWptTest, req, res, runTestStub;
 
   before(() => {
