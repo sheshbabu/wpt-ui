@@ -8,4 +8,8 @@ const logger = bunyan.createLogger({
   }
 });
 
+if (process.env.NODE_ENV === "test") {
+  logger.level(bunyan.FATAL + 1); // Any level above "FATAL" mutes the logger
+}
+
 module.exports = logger;
