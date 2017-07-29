@@ -3,7 +3,7 @@ let pg = null;
 
 function init(config) {
   initKnex(config);
-  migrateKnex(config);
+  return migrateKnex();
 }
 
 function initKnex(config) {
@@ -11,9 +11,8 @@ function initKnex(config) {
   pg = knex(knexConfig);
 }
 
-function migrateKnex(config) {
-  const knexConfig = getKnexConfig(config);
-  knex.migrate.latest(knexConfig);
+function migrateKnex() {
+  return pg.migrate.latest();
 }
 
 function getKnexConfig(config) {
