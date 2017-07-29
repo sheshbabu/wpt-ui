@@ -1,8 +1,8 @@
 const express = require("express");
-const createWptTest = require("./create-wpt-test");
+const createTest = require("./create-test");
 
 const router = express.Router();
 
-router.post("/", createWptTest);
+router.post("/", createTest);
 
 module.exports = router;
