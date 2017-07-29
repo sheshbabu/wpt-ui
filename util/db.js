@@ -1,6 +1,8 @@
 const path = require("path");
 const knex = require("knex");
+
 let pg = null;
+let wptReportsTable = null;
 
 function init(config) {
   initKnex(config);
@@ -10,6 +12,7 @@ function init(config) {
 function initKnex(config) {
   const knexConfig = getKnexConfig(config);
   pg = knex(knexConfig);
+  wptReportsTable = pg("wpt_reports");
 }
 
 function migrateKnex() {
@@ -39,5 +42,5 @@ function getKnexConfig(config) {
 
 module.exports = {
   init,
-  pg
+  wptReportsTable
 };
