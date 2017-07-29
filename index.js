@@ -1,9 +1,18 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const db = require("./util/db");
 const logger = require("./util/logger");
 const wptRouter = require("./routes/wpt");
 
 const app = express();
+
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  logger.info({ req, res });
+  next();
+});
+
 app.use("/api/tests", wptRouter);
 
 async function start(config = {}) {
