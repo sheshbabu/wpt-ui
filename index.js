@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   logger.info({ req, res });
+  logger.info({ body: req.body });
   next();
 });
 
