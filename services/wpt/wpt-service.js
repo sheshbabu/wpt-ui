@@ -1,5 +1,6 @@
 const axios = require("axios");
 const logger = require("../../util/logger");
+const wptDao = require("../../dao/wpt");
 const WptRunTestError = require("../../errors/WptRunTestError");
 
 async function runTest(config) {
@@ -9,10 +10,9 @@ async function runTest(config) {
   const body = response.body;
   logger.info({ response: body });
   if (body.statusCode === 200) {
-    const testId = body.data.testId;
-    const jsonUrl = body.data.jsonUrl;
-    logger.info({ testId, jsonUrl });
-    return Promise.resolve({ testId, jsonUrl });
+    const { testId } = body.data;
+    logger.info({ testId });
+    return wptDao.createPendingTest(testId);
   } else if (body.statusCode === 400) {
     throw new WptRunTestError(body);
   }
