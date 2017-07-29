@@ -1,7 +1,7 @@
 const assert = require("assert");
 const sinon = require("sinon");
 const axios = require("axios");
-const wptService = require("./wpt-service");
+const proxyquire = require("proxyquire");
 const WptRunTestError = require("../../errors/WptRunTestError");
 
 const config = {
@@ -36,24 +36,34 @@ const failureResponse = {
 
 describe("wptService", () => {
   describe("runTest", () => {
-    let requestStub;
+    let wptService, wptDaoCreatePendingTestStub, requestStub;
+
     beforeEach(() => {
+      wptDaoCreatePendingTestStub = sinon.stub().resolves();
+      wptService = proxyquire("./wpt-service", {
+        "../../dao/wpt": {
+          createPendingTest: wptDaoCreatePendingTestStub
+        }
+      });
       requestStub = sinon.stub(axios, "get");
     });
+
     afterEach(() => {
       axios.get.restore();
     });
+
     it("should call webpagetest endpoint for running tests", () => {
       requestStub.resolves(successResponse);
       wptService.runTest(config);
-      const expectedOutput = "http://www.webpagetest.org/runtest.php";
-      const actualOutput = requestStub.firstCall.args[0];
-      assert.strictEqual(actualOutput, expectedOutput);
+      const expected = "http://www.webpagetest.org/runtest.php";
+      const actual = requestStub.firstCall.args[0];
+      assert.strictEqual(actual, expected);
     });
+
     it("should map the config to request params", () => {
       requestStub.resolves(successResponse);
       wptService.runTest(config);
-      const expectedOutput = {
+      const expected = {
         params: {
           url: "www.test.com",
           k: "xyz",
@@ -62,10 +72,20 @@ describe("wptService", () => {
           f: "json"
         }
       };
-      const actualOutput = requestStub.firstCall.args[1];
-      assert.deepStrictEqual(actualOutput, expectedOutput);
+      const actual = requestStub.firstCall.args[1];
+      assert.deepStrictEqual(actual, expected);
     });
-    it("should throw WptRunTestError if it gets statusCode 400 from api", async () => {
+
+    it("should call wptDao.createPendingTest with testId for success response", async () => {
+      requestStub.resolves(successResponse);
+      await wptService.runTest(config);
+      const expected = successResponse.body.data.testId;
+      const actual = wptDaoCreatePendingTestStub.firstCall.args[0];
+      assert(wptDaoCreatePendingTestStub.calledOnce);
+      assert.strictEqual(actual, expected);
+    });
+
+    it("should throw WptRunTestError for failure response", async () => {
       requestStub.resolves(failureResponse);
       try {
         await wptService.runTest(config);
