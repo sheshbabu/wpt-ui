@@ -7,6 +7,7 @@ const config = {
   wptUrl: "www.test.com",
   wptApiKey: "xyz",
   wptLocation: "ec2-ap-southeast-1:Chrome.Cable",
+  wptPingbackUrl: "www.pingback.com",
   wptRuns: 5
 };
 
@@ -32,7 +33,7 @@ describe("createWptTest", () => {
     req = mockRequest();
     res = mockResponse();
     runTestStub = sinon.stub();
-    createWptTest = proxyquire("./create-wpt-test", {
+    createWptTest = proxyquire("./create-test", {
       "../../services/wpt": {
         runTest: runTestStub
       }

@@ -23,6 +23,7 @@ function getWptParams(config) {
     url: config.wptUrl,
     k: config.wptApiKey,
     location: config.wptLocation,
+    pingback: config.wptPingbackUrl,
     runs: config.wptRuns,
     f: "json"
   };
