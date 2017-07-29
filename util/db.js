@@ -1,3 +1,4 @@
+const path = require("path");
 const knex = require("knex");
 let pg = null;
 
@@ -12,7 +13,8 @@ function initKnex(config) {
 }
 
 function migrateKnex() {
-  return pg.migrate.latest();
+  const migrationDirPath = path.join(__dirname, "../migrations");
+  return pg.migrate.latest({ directory: migrationDirPath });
 }
 
 function getKnexConfig(config) {
