@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("./util/db");
 const logger = require("./util/logger");
 const wptRouter = require("./routes/wpt");
 
@@ -7,6 +8,7 @@ app.use("/api/tests", wptRouter);
 
 function init(config = {}) {
   app.locals.config = config;
+  db.init(config);
 }
 
 function start() {
