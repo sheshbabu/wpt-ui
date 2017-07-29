@@ -1,23 +1,24 @@
 const path = require("path");
-const knex = require("knex");
 
-let pg = null;
-let wptReportsTable = null;
+let knex = null;
 
 function init(config) {
   initKnex(config);
   return migrateKnex();
 }
 
+function getKnex() {
+  return knex;
+}
+
 function initKnex(config) {
   const knexConfig = getKnexConfig(config);
-  pg = knex(knexConfig);
-  wptReportsTable = pg("wpt_reports");
+  knex = require("knex")(knexConfig);
 }
 
 function migrateKnex() {
   const migrationDirPath = path.join(__dirname, "../migrations");
-  return pg.migrate.latest({ directory: migrationDirPath });
+  return knex.migrate.latest({ directory: migrationDirPath });
 }
 
 function getKnexConfig(config) {
@@ -42,5 +43,5 @@ function getKnexConfig(config) {
 
 module.exports = {
   init,
-  wptReportsTable
+  getKnex
 };

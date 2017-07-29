@@ -1,7 +1,9 @@
 const db = require("../../util/db");
 
+const knex = db.getKnex();
+
 function createPendingTest(testId) {
-  return db.wptReportsTable.insert({
+  return knex("wpt_reports").insert({
     test_id: testId,
     status: "pending",
     url: "",
