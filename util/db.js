@@ -17,14 +17,22 @@ function migrateKnex(config) {
 }
 
 function getKnexConfig(config) {
-  return {
-    client: "pg",
-    connection: {
+  let connection = {};
+
+  if (config.dbConnectionString) {
+    connection = config.dbConnectionString;
+  } else {
+    connection = {
       host: config.dbHost,
       user: config.dbUser,
       password: config.dbPassword,
       database: config.dbDatabase
-    }
+    };
+  }
+
+  return {
+    client: "pg",
+    connection
   };
 }
 
