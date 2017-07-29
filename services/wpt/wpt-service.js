@@ -7,7 +7,7 @@ async function runTest(config) {
   const RUN_TEST_URL = "http://www.webpagetest.org/runtest.php";
   const params = getWptParams(config);
   const response = await axios.get(RUN_TEST_URL, { params });
-  const body = response.body;
+  const body = response.data;
   logger.info({ response: body });
   if (body.statusCode === 200) {
     const { testId } = body.data;

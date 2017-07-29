@@ -12,7 +12,7 @@ const config = {
 };
 
 const successResponse = {
-  body: {
+  data: {
     statusCode: 200,
     statusText: "Ok",
     data: {
@@ -28,7 +28,7 @@ const successResponse = {
 };
 
 const failureResponse = {
-  body: {
+  data: {
     statusCode: 400,
     statusText: "Invalid URL, please try submitting your test request again."
   }
@@ -79,7 +79,7 @@ describe("wptService", () => {
     it("should call wptDao.createPendingTest with testId for success response", async () => {
       requestStub.resolves(successResponse);
       await wptService.runTest(config);
-      const expected = successResponse.body.data.testId;
+      const expected = successResponse.data.data.testId;
       const actual = wptDaoCreatePendingTestStub.firstCall.args[0];
       assert(wptDaoCreatePendingTestStub.calledOnce);
       assert.strictEqual(actual, expected);
