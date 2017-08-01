@@ -10,9 +10,9 @@ async function runTest(config) {
   const body = response.data;
   logger.info({ response: body });
   if (body.statusCode === 200) {
-    const { testId } = body.data;
+    const { testId, jsonUrl } = body.data;
     logger.info({ testId });
-    return wptDao.createPendingTest(testId);
+    return wptDao.createPendingTest(testId, jsonUrl);
   } else if (body.statusCode === 400) {
     throw new WptRunTestError(body);
   }
