@@ -29,6 +29,4 @@ function getWptParams(config) {
   };
 }
 
-module.exports = {
-  runTest
-};
+module.exports = runTest;
