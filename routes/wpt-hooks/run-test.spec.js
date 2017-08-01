@@ -14,7 +14,7 @@ const config = {
 function mockRequest() {
   return httpMocks.createRequest({
     method: "POST",
-    url: "/api/tests"
+    url: "/hooks/run"
   });
 }
 
@@ -26,16 +26,16 @@ function mockResponse() {
   return res;
 }
 
-describe("createWptTest", () => {
-  let createWptTest, req, res, runTestStub;
+describe("WptHooksRouter - runTest", () => {
+  let runTestRouteHandler, req, res, runTestServiceStub;
 
   beforeEach(() => {
     req = mockRequest();
     res = mockResponse();
-    runTestStub = sinon.stub();
-    createWptTest = proxyquire("./create-test", {
+    runTestServiceStub = sinon.stub();
+    runTestRouteHandler = proxyquire("./run-test", {
       "../../services/wpt": {
-        runTest: runTestStub
+        runTest: runTestServiceStub
       }
     });
   });
@@ -43,20 +43,20 @@ describe("createWptTest", () => {
   afterEach(() => {
     req = null;
     res = null;
-    runTestStub = null;
-    createWptTest = null;
+    runTestServiceStub = null;
+    runTestRouteHandler = null;
   });
 
-  it("should return 200 for POST /api/tests", () => {
-    createWptTest(req, res);
+  it("should return 200 for POST /hooks/run", () => {
+    runTestRouteHandler(req, res);
     const actualStatusCode = res.statusCode;
     const expectedStatusCode = 200;
     assert(actualStatusCode, expectedStatusCode);
   });
 
   it("should call 'wptService.runTest' with config present in res.app.locals", () => {
-    createWptTest(req, res);
-    assert(runTestStub.calledOnce);
-    assert(runTestStub.calledWith(config));
+    runTestRouteHandler(req, res);
+    assert(runTestServiceStub.calledOnce);
+    assert(runTestServiceStub.calledWith(config));
   });
 });

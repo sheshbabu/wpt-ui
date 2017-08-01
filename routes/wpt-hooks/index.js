@@ -1,8 +1,8 @@
 const express = require("express");
-const createTest = require("./create-test");
+const runTest = require("./run-test");
 
 const router = express.Router();
 
-router.post("/", createTest);
+router.use("/run", runTest);
 
 module.exports = router;

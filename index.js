@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("./util/db");
 const logger = require("./util/logger");
-const wptRouter = require("./routes/wpt");
+const wptHooksRouter = require("./routes/wpt-hooks");
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/tests", wptRouter);
+app.use("/hooks", wptHooksRouter);
 
 async function start(config = {}) {
   registerConfig(config);
