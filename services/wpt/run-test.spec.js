@@ -36,13 +36,13 @@ const failureResponse = {
 };
 
 describe("WptService - runTest", () => {
-  let runTest, wptDaoCreatePendingTestStub, requestStub;
+  let runTest, wptDaoCreateTestStub, requestStub;
 
   beforeEach(() => {
-    wptDaoCreatePendingTestStub = sinon.stub().resolves();
+    wptDaoCreateTestStub = sinon.stub().resolves();
     runTest = proxyquire("./run-test", {
       "../../dao/wpt": {
-        createPendingTest: wptDaoCreatePendingTestStub
+        createTest: wptDaoCreateTestStub
       }
     });
     requestStub = sinon.stub(axios, "get");
@@ -81,8 +81,8 @@ describe("WptService - runTest", () => {
     requestStub.resolves(successResponse);
     await runTest(config);
     const expected = successResponse.data.data.testId;
-    const actual = wptDaoCreatePendingTestStub.firstCall.args[0];
-    assert(wptDaoCreatePendingTestStub.calledOnce);
+    const actual = wptDaoCreateTestStub.firstCall.args[0];
+    assert(wptDaoCreateTestStub.calledOnce);
     assert.strictEqual(actual, expected);
   });
 

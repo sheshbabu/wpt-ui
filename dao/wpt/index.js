@@ -1,5 +1,5 @@
-const createPendingTest = require("./create-pending-test");
+const createTest = require("./create-test");
 
 module.exports = {
-  createPendingTest
+  createTest
 };

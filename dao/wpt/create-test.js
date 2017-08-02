@@ -1,6 +1,6 @@
 const db = require("../../util/db");
 
-function createPendingTest(testId, jsonUrl) {
+function createTest(testId, jsonUrl) {
   const knex = db.getKnex();
   return knex("wpt_reports").insert({
     test_id: testId,
@@ -39,4 +39,4 @@ function createPendingTest(testId, jsonUrl) {
   });
 }
 
-module.exports = createPendingTest;
+module.exports = createTest;

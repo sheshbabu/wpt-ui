@@ -12,7 +12,7 @@ async function runTest(config) {
   if (body.statusCode === 200) {
     const { testId, jsonUrl } = body.data;
     logger.info({ testId });
-    return wptDao.createPendingTest(testId, jsonUrl);
+    return wptDao.createTest(testId, jsonUrl);
   } else if (body.statusCode === 400) {
     throw new WptRunTestError(body);
   }
