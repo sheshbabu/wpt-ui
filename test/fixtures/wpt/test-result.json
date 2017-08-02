@@ -1,0 +1,325 @@
+{
+  "data": {
+    "id": "awesome_test_id",
+    "url": "my.awesome.site",
+    "summary": "http://www.webpagetest.org/results.php?test=awesome_test_id",
+    "testUrl": "my.awesome.site",
+    "location": "ec2-ap-southeast-1:Chrome",
+    "connectivity": "Cable",
+    "bwDown": 5000,
+    "bwUp": 1000,
+    "latency": 28,
+    "median": {
+      "firstView": {
+        "loadTime": 17331,
+        "TTFB": 475,
+        "bytesOut": 121907,
+        "bytesOutDoc": 110134,
+        "bytesIn": 2941177,
+        "bytesInDoc": 2888562,
+        "connections": 83,
+        "requestsFull": 182,
+        "requestsDoc": 168,
+        "responses_200": 148,
+        "responses_404": 0,
+        "responses_other": 14,
+        "result": 0,
+        "render": 5146,
+        "fullyLoaded": 19060,
+        "cached": 0,
+        "docTime": 17331,
+        "domTime": 0,
+        "score_cache": 23,
+        "score_cdn": 71,
+        "score_gzip": 100,
+        "score_cookies": -1,
+        "score_keep-alive": 100,
+        "score_minify": -1,
+        "score_combine": 100,
+        "score_compress": 100,
+        "score_etags": -1,
+        "gzip_total": 1394009,
+        "gzip_savings": 0,
+        "minify_total": 0,
+        "minify_savings": 0,
+        "image_total": 1010500,
+        "image_savings": 0,
+        "base_page_redirects": 1,
+        "optimization_checked": 1,
+        "aft": 0,
+        "domElements": 1421,
+        "pageSpeedVersion": "1.9",
+        "titleTime": 3948,
+        "loadEventStart": 17329,
+        "loadEventEnd": 17393,
+        "domContentLoadedEventStart": 4335,
+        "domContentLoadedEventEnd": 4642,
+        "lastVisualChange": 14749,
+        "browser_name": "Google Chrome",
+        "browser_version": "59.0.3071.86",
+        "server_count": 2,
+        "server_rtt": 29,
+        "base_page_cdn": "",
+        "eventName": "Step 1",
+        "fixed_viewport": 1,
+        "score_progressive_jpeg": -1,
+        "firstPaint": 1161,
+        "docCPUms": 16676.507,
+        "fullyLoadedCPUms": 17518.912,
+        "docCPUpct": 96,
+        "fullyLoadedCPUpct": 83,
+        "isResponsive": -1,
+        "browser_process_count": 5,
+        "browser_main_memory_kb": 87480,
+        "browser_other_private_memory_kb": 78960,
+        "browser_working_set_kb": 166440,
+        "domInteractive": 4335,
+        "domLoading": 495,
+        "base_page_ttfb": 475,
+        "visualComplete": 14749,
+        "SpeedIndex": 13155,
+        "certificate_bytes": 248413,
+        "visualComplete85": 14749,
+        "visualComplete90": 14749,
+        "visualComplete95": 14749,
+        "visualComplete99": 14749,
+        "step": 1,
+        "effectiveBps": 158255,
+        "effectiveBpsDoc": 171366,
+        "smallImageCount": 16,
+        "bigImageCount": 1,
+        "maybeCaptcha": 0,
+        "domains": {
+          "domain_1": {
+            "bytes": 770,
+            "requests": 1,
+            "connections": 1
+          },
+          "domain_2": {
+            "bytes": 350,
+            "requests": 1,
+            "cdn_provider": "Google",
+            "connections": 1
+          },
+          "domain_3": {
+            "bytes": 2295,
+            "requests": 2,
+            "cdn_provider": "Akamai",
+            "connections": 1
+          },
+          "domain_4": {
+            "bytes": 58689,
+            "requests": 4,
+            "cdn_provider": "Google",
+            "connections": 1
+          },
+          "domain_5": {
+            "bytes": 11125,
+            "requests": 1,
+            "cdn_provider": "Amazon CloudFront",
+            "connections": 1
+          }
+        },
+        "breakdown": {
+          "html": {
+            "color": [130, 181, 252],
+            "bytes": 60903,
+            "bytesUncompressed": 138766,
+            "requests": 21
+          },
+          "js": {
+            "color": [254, 197, 132],
+            "bytes": 1164120,
+            "bytesUncompressed": 3951167,
+            "requests": 43
+          },
+          "css": {
+            "color": [178, 234, 148],
+            "bytes": 133572,
+            "bytesUncompressed": 852163,
+            "requests": 3
+          },
+          "image": {
+            "color": [196, 154, 232],
+            "bytes": 1032981,
+            "bytesUncompressed": 1010629,
+            "requests": 79
+          },
+          "flash": {
+            "color": [45, 183, 193],
+            "bytes": 0,
+            "bytesUncompressed": 0,
+            "requests": 0
+          },
+          "font": {
+            "color": [255, 82, 62],
+            "bytes": 58689,
+            "bytesUncompressed": 58160,
+            "requests": 4
+          },
+          "other": {
+            "color": [196, 196, 196],
+            "bytes": 82024,
+            "bytesUncompressed": 382125,
+            "requests": 22
+          }
+        }
+      },
+      "repeatView": {
+        "loadTime": 13844,
+        "TTFB": 534,
+        "bytesOut": 144566,
+        "bytesOutDoc": 90683,
+        "bytesIn": 600005,
+        "bytesInDoc": 397812,
+        "connections": 87,
+        "requestsFull": 187,
+        "requestsDoc": 105,
+        "responses_200": 113,
+        "responses_404": 0,
+        "responses_other": 20,
+        "result": 99999,
+        "render": 2830,
+        "fullyLoaded": 20730,
+        "cached": 1,
+        "docTime": 13844,
+        "domTime": 0,
+        "score_cache": 2,
+        "score_cdn": 21,
+        "score_gzip": 87,
+        "score_cookies": -1,
+        "score_keep-alive": 93,
+        "score_minify": -1,
+        "score_combine": 100,
+        "score_compress": 100,
+        "score_etags": -1,
+        "gzip_total": 59039,
+        "gzip_savings": 7444,
+        "minify_total": 0,
+        "minify_savings": 0,
+        "image_total": 11824,
+        "image_savings": 0,
+        "base_page_redirects": 0,
+        "optimization_checked": 1,
+        "aft": 0,
+        "domElements": 1420,
+        "pageSpeedVersion": "1.9",
+        "titleTime": 2521,
+        "loadEventStart": 14062,
+        "loadEventEnd": 14153,
+        "domContentLoadedEventStart": 3436,
+        "domContentLoadedEventEnd": 3454,
+        "lastVisualChange": 8654,
+        "browser_name": "Google Chrome",
+        "browser_version": "59.0.3071.86",
+        "server_count": 8,
+        "server_rtt": 41,
+        "eventName": "Step 1",
+        "fixed_viewport": 1,
+        "score_progressive_jpeg": -1,
+        "firstPaint": 582,
+        "docCPUms": 13416.086,
+        "fullyLoadedCPUms": 19968.128,
+        "docCPUpct": 95,
+        "fullyLoadedCPUpct": 86,
+        "isResponsive": -1,
+        "browser_process_count": 6,
+        "browser_main_memory_kb": 79076,
+        "browser_other_private_memory_kb": 72396,
+        "browser_working_set_kb": 151472,
+        "domInteractive": 3436,
+        "domLoading": 215,
+        "base_page_ttfb": 534,
+        "visualComplete": 8654,
+        "SpeedIndex": 7558,
+        "certificate_bytes": 258437,
+        "visualComplete85": 8654,
+        "visualComplete90": 8654,
+        "visualComplete95": 8654,
+        "visualComplete99": 8654,
+        "step": 1,
+        "effectiveBps": 29709,
+        "effectiveBpsDoc": 29888,
+        "smallImageCount": 1,
+        "bigImageCount": 0,
+        "maybeCaptcha": 0,
+        "domains": {
+          "domain_1": {
+            "bytes": 1308,
+            "requests": 3,
+            "connections": 2
+          },
+          "domain_2": {
+            "bytes": 782,
+            "requests": 1,
+            "connections": 1
+          },
+          "domain_3": {
+            "bytes": 2894,
+            "requests": 3,
+            "cdn_provider": "Akamai",
+            "connections": 1
+          },
+          "domain_4": {
+            "bytes": 622,
+            "requests": 2,
+            "cdn_provider": "Fastly",
+            "connections": 1
+          },
+          "domain_5": {
+            "bytes": 3624,
+            "requests": 4,
+            "connections": 1
+          }
+        },
+        "breakdown": {
+          "html": {
+            "color": [130, 181, 252],
+            "bytes": 48097,
+            "bytesUncompressed": 78139,
+            "requests": 24
+          },
+          "js": {
+            "color": [254, 197, 132],
+            "bytes": 4783,
+            "bytesUncompressed": 4239,
+            "requests": 7
+          },
+          "css": {
+            "color": [178, 234, 148],
+            "bytes": 0,
+            "bytesUncompressed": 0,
+            "requests": 0
+          },
+          "image": {
+            "color": [196, 154, 232],
+            "bytes": 46909,
+            "bytesUncompressed": 12039,
+            "requests": 84
+          },
+          "flash": {
+            "color": [45, 183, 193],
+            "bytes": 0,
+            "bytesUncompressed": 0,
+            "requests": 0
+          },
+          "font": {
+            "color": [255, 82, 62],
+            "bytes": 0,
+            "bytesUncompressed": 0,
+            "requests": 0
+          },
+          "other": {
+            "color": [196, 196, 196],
+            "bytes": 34133,
+            "bytesUncompressed": 123029,
+            "requests": 19
+          }
+        }
+      }
+    }
+  },
+  "statusCode": 200,
+  "statusText": "Test Complete",
+  "webPagetestVersion": "3.0"
+}
