@@ -47,7 +47,7 @@ function mapResponse(body) {
 }
 
 function getBreakdownList(breakdown) {
-  return Object.keys(breakdown).map(name => {
+  const list = Object.keys(breakdown).map(name => {
     const bytesDownloaded = breakdown[name].bytes;
     const requestsMade = breakdown[name].requests;
     return {
@@ -56,6 +56,7 @@ function getBreakdownList(breakdown) {
       requests_made: requestsMade
     };
   });
+  return JSON.stringify(list);
 }
 
 module.exports = updateTest;

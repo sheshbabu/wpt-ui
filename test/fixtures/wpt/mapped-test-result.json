@@ -16,70 +16,8 @@
   "fv_speed_index": 13155,
   "fv_requests_made": 182,
   "fv_bytes_downloaded": 2941177,
-  "fv_domain_breakdown": [
-    {
-      "bytes_downloaded": 770,
-      "name": "domain_1",
-      "requests_made": 1
-    },
-    {
-      "bytes_downloaded": 350,
-      "name": "domain_2",
-      "requests_made": 1
-    },
-    {
-      "bytes_downloaded": 2295,
-      "name": "domain_3",
-      "requests_made": 2
-    },
-    {
-      "bytes_downloaded": 58689,
-      "name": "domain_4",
-      "requests_made": 4
-    },
-    {
-      "bytes_downloaded": 11125,
-      "name": "domain_5",
-      "requests_made": 1
-    }
-  ],
-  "fv_content_breakdown": [
-    {
-      "bytes_downloaded": 60903,
-      "name": "html",
-      "requests_made": 21
-    },
-    {
-      "bytes_downloaded": 1164120,
-      "name": "js",
-      "requests_made": 43
-    },
-    {
-      "bytes_downloaded": 133572,
-      "name": "css",
-      "requests_made": 3
-    },
-    {
-      "bytes_downloaded": 1032981,
-      "name": "image",
-      "requests_made": 79
-    },
-    {
-      "bytes_downloaded": 0,
-      "name": "flash",
-      "requests_made": 0
-    },
-    {
-      "bytes_downloaded": 58689,
-      "name": "font",
-      "requests_made": 4
-    },
-    {
-      "bytes_downloaded": 82024,
-      "name": "other",
-      "requests_made": 22
-    }
-  ],
+  "fv_domain_breakdown": "[{\"name\":\"domain_1\",\"bytes_downloaded\":770,\"requests_made\":1},{\"name\":\"domain_2\",\"bytes_downloaded\":350,\"requests_made\":1},{\"name\":\"domain_3\",\"bytes_downloaded\":2295,\"requests_made\":2},{\"name\":\"domain_4\",\"bytes_downloaded\":58689,\"requests_made\":4},{\"name\":\"domain_5\",\"bytes_downloaded\":11125,\"requests_made\":1}]",
+  "fv_content_breakdown": "[{\"name\":\"html\",\"bytes_downloaded\":60903,\"requests_made\":21},{\"name\":\"js\",\"bytes_downloaded\":1164120,\"requests_made\":43},{\"name\":\"css\",\"bytes_downloaded\":133572,\"requests_made\":3},{\"name\":\"image\",\"bytes_downloaded\":1032981,\"requests_made\":79},{\"name\":\"flash\",\"bytes_downloaded\":0,\"requests_made\":0},{\"name\":\"font\",\"bytes_downloaded\":58689,\"requests_made\":4},{\"name\":\"other\",\"bytes_downloaded\":82024,\"requests_made\":22}]",
   "rv_ttfb": 534,
   "rv_first_paint": 582,
   "rv_start_render": 2830,
@@ -90,68 +28,6 @@
   "rv_speed_index": 7558,
   "rv_requests_made": 187,
   "rv_bytes_downloaded": 600005,
-  "rv_domain_breakdown": [
-    {
-      "bytes_downloaded": 1308,
-      "name": "domain_1",
-      "requests_made": 3
-    },
-    {
-      "bytes_downloaded": 782,
-      "name": "domain_2",
-      "requests_made": 1
-    },
-    {
-      "bytes_downloaded": 2894,
-      "name": "domain_3",
-      "requests_made": 3
-    },
-    {
-      "bytes_downloaded": 622,
-      "name": "domain_4",
-      "requests_made": 2
-    },
-    {
-      "bytes_downloaded": 3624,
-      "name": "domain_5",
-      "requests_made": 4
-    }
-  ],
-  "rv_content_breakdown": [
-    {
-      "bytes_downloaded": 48097,
-      "name": "html",
-      "requests_made": 24
-    },
-    {
-      "bytes_downloaded": 4783,
-      "name": "js",
-      "requests_made": 7
-    },
-    {
-      "bytes_downloaded": 0,
-      "name": "css",
-      "requests_made": 0
-    },
-    {
-      "bytes_downloaded": 46909,
-      "name": "image",
-      "requests_made": 84
-    },
-    {
-      "bytes_downloaded": 0,
-      "name": "flash",
-      "requests_made": 0
-    },
-    {
-      "bytes_downloaded": 0,
-      "name": "font",
-      "requests_made": 0
-    },
-    {
-      "bytes_downloaded": 34133,
-      "name": "other",
-      "requests_made": 19
-    }
-  ]
+  "rv_domain_breakdown": "[{\"name\":\"domain_1\",\"bytes_downloaded\":1308,\"requests_made\":3},{\"name\":\"domain_2\",\"bytes_downloaded\":782,\"requests_made\":1},{\"name\":\"domain_3\",\"bytes_downloaded\":2894,\"requests_made\":3},{\"name\":\"domain_4\",\"bytes_downloaded\":622,\"requests_made\":2},{\"name\":\"domain_5\",\"bytes_downloaded\":3624,\"requests_made\":4}]",
+  "rv_content_breakdown": "[{\"name\":\"html\",\"bytes_downloaded\":48097,\"requests_made\":24},{\"name\":\"js\",\"bytes_downloaded\":4783,\"requests_made\":7},{\"name\":\"css\",\"bytes_downloaded\":0,\"requests_made\":0},{\"name\":\"image\",\"bytes_downloaded\":46909,\"requests_made\":84},{\"name\":\"flash\",\"bytes_downloaded\":0,\"requests_made\":0},{\"name\":\"font\",\"bytes_downloaded\":0,\"requests_made\":0},{\"name\":\"other\",\"bytes_downloaded\":34133,\"requests_made\":19}]"
 }
