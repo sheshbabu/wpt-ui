@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.table("wpt_reports", table => {
-    table.string("json_url").notNullable();
+    table.string("json_url").notNullable().defaultTo("");
   });
 };
 
