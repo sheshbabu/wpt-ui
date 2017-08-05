@@ -71,5 +71,6 @@ describe("WptDao - createTest", () => {
     assert.strictEqual(row[0].rv_bytes_downloaded, 0);
     assert.deepStrictEqual(row[0].rv_domain_breakdown, {});
     assert.deepStrictEqual(row[0].rv_content_breakdown, {});
+    assert.ok(row[0].created_at);
   });
 });
