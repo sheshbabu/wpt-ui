@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "8.2.1"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database "wpt-ui-test";' -U postgres
+  - npm i
+script:
+  - npm t
