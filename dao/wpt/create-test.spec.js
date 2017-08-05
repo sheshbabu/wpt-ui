@@ -1,25 +1,16 @@
 const assert = require("assert");
 const proxyquire = require("proxyquire");
-
-function getKnex() {
-  const config = {
-    client: "pg",
-    connection: "postgres://sheshbabu:password@localhost:5432/wpt-ui-test"
-  };
-  return require("knex")(config);
-}
+const dbMock = require("../../test/mocks/db");
 
 describe("WptDao - createTest", () => {
-  const knex = getKnex();
+  const knex = dbMock.getKnex();
   const testId = "xyz";
   const jsonUrl = "www.xyz.com";
   let createTestWptDao;
 
   beforeEach(async () => {
     createTestWptDao = proxyquire("./create-test.js", {
-      "../../util/db": {
-        getKnex
-      }
+      "../../util/db": dbMock
     });
     await knex.migrate.rollback();
     return knex.migrate.latest();
