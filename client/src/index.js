@@ -1,6 +1,9 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
-const App = require("./App");
-require("./index.css");
+import React from "react";
+import ReactDOM from "react-dom";
+import injectTapEventPlugin from "react-tap-event-plugin";
+import App from "./App";
+import "./index.css";
+
+injectTapEventPlugin();
 
 ReactDOM.render(<App />, document.getElementById("root"));

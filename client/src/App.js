@@ -1,9 +1,15 @@
-const React = require("react");
+import React from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import AppBar from "material-ui/AppBar";
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
-    return <div>Hello World!</div>;
+    return (
+      <MuiThemeProvider>
+        <div>
+          <AppBar title="WPT UI" />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 }
-
-module.exports = App;
