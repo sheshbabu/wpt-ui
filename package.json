@@ -10,12 +10,19 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
-  "keywords": ["webpagetest"],
+  "keywords": [
+    "webpagetest"
+  ],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "eslint": "^4.2.0",
     "eslint-plugin-json": "^1.2.0",
     "husky": "^0.13.4",
