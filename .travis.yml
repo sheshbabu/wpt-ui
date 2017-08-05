@@ -5,7 +5,7 @@ services:
   - postgresql
 before_script:
   # Postgres Setup
-  - psql -c 'create database wpt-ui-test;' -U postgres
+  - psql -c 'create database "wpt-ui-test";' -U postgres
   - DATABASE_URL=postgres://postgres:password@localhost:5432/wpt-ui-test
   # NPM setup
   - npm i
