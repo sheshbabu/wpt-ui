@@ -4,10 +4,7 @@ node_js:
 services:
   - postgresql
 before_script:
-  # Postgres Setup
   - psql -c 'create database "wpt-ui-test";' -U postgres
-  - DATABASE_URL=postgres://postgres@localhost/wpt-ui-test
-  # NPM setup
   - npm i
 script:
   - npm t
