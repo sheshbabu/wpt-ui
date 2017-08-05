@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("./util/db");
+const client = require("./util/client");
 const logger = require("./util/logger");
 const wptHooksRouter = require("./routes/wpt-hooks");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(express.static(client.buildPath));
 
 app.use((req, res, next) => {
   logger.info({ req, res });
@@ -19,6 +21,7 @@ app.use("/hooks", wptHooksRouter);
 async function start(config = {}) {
   registerConfig(config);
   await initDb();
+  await client.runBuild();
   startServer();
 }
 
