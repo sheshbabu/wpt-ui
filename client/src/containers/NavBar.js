@@ -20,16 +20,19 @@ export default function NavBar() {
 }
 
 function StartNewTestButton() {
-  const style = {
+  const buttonStyle = {
     margin: "6px 6px 12px 12px"
+  };
+  const iconStyle = {
+    marginTop: "-2px"
   };
   return (
     <RaisedButton
-      style={style}
+      style={buttonStyle}
       label="Start New Test"
       labelPosition="before"
       labelColor={color}
-      icon={<PlayArrow color={color} />}
+      icon={<PlayArrow color={color} style={iconStyle} />}
     />
   );
 }
