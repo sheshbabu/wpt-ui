@@ -4,7 +4,7 @@
   "description": "UI for WebPagetest",
   "main": "index.js",
   "scripts": {
-    "start": "node -e 'require(\"./index\").start()' | bunyan",
+    "start": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
     "test": "NODE_ENV=test mocha --recursive './!(node_modules|client)/**/*.spec.js'",
     "test:cov": "nyc npm test",
     "lint": "eslint .",

@@ -37,8 +37,9 @@ function registerConfig(config) {
   logger.info({ config: app.locals.config }, "Registered config:");
 }
 
-function initDb() {
+async function initDb() {
   db.init(app.locals.config);
+  await db.seed();
   return db.migrate();
 }
 

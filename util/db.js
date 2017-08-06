@@ -16,6 +16,13 @@ function migrate() {
   return knex.migrate.latest({ directory: migrationDirPath });
 }
 
+function seed() {
+  if (process.env.NODE_ENV === "development") {
+    return knex.seed.run();
+  }
+  return Promise.resolve();
+}
+
 function getKnexConfig(config) {
   let connection = {};
 
@@ -39,5 +46,6 @@ function getKnexConfig(config) {
 module.exports = {
   init,
   migrate,
+  seed,
   getKnex
 };
