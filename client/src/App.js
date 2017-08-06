@@ -1,14 +1,12 @@
 import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
+import NavBar from "./containers/NavBar";
 
 export default class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div>
-          <AppBar title="WPT UI" />
-        </div>
+        <NavBar />
       </MuiThemeProvider>
     );
   }
