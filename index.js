@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 const db = require("./util/db");
 const client = require("./util/client");
 const logger = require("./util/logger");
 const wptHooksRouter = require("./routes/wpt-hooks");
+
+dotenv.load();
 
 const app = express();
 
@@ -18,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use("/hooks", wptHooksRouter);
 
-async function start(config = {}) {
+async function start(config) {
   registerConfig(config);
   await initDb();
   await client.runBuild();
@@ -26,7 +29,12 @@ async function start(config = {}) {
 }
 
 function registerConfig(config) {
-  app.locals.config = config;
+  const defaults = {
+    dbConnectionString: process.env.DATABASE_URL,
+    port: 3000
+  };
+  app.locals.config = Object.assign({}, defaults, config);
+  logger.info({ config: app.locals.config }, "Registered config:");
 }
 
 function initDb() {
@@ -35,7 +43,7 @@ function initDb() {
 }
 
 function startServer() {
-  const port = app.locals.config.port || 3000;
+  const port = app.locals.config.port;
   logger.info(`Staring app in port: ${port}`);
   app.listen(port);
 }
