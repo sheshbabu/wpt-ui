@@ -8,3 +8,7 @@ before_script:
   - npm i
 script:
   - npm t
+notifications:
+  email:
+    on_success: never
+    on_failure: always
