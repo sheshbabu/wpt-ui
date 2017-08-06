@@ -30,7 +30,8 @@ function registerConfig(config) {
 }
 
 function initDb() {
-  return db.init(app.locals.config);
+  db.init(app.locals.config);
+  return db.migrate();
 }
 
 function startServer() {

@@ -1,19 +1,18 @@
 const assert = require("assert");
-const proxyquire = require("proxyquire");
-const dbMock = require("../../test/mocks/db");
+const createTestWptDao = require("./create-test.js");
+const db = require("../../util/db");
+const initDb = require("../../test/helpers/init-db");
+
+initDb();
 
 describe("WptDao - createTest", () => {
-  const knex = dbMock.getKnex();
+  const knex = db.getKnex();
   const testId = "xyz";
   const jsonUrl = "www.xyz.com";
-  let createTestWptDao;
 
   beforeEach(async () => {
-    createTestWptDao = proxyquire("./create-test.js", {
-      "../../util/db": dbMock
-    });
     await knex.migrate.rollback();
-    return knex.migrate.latest();
+    return db.migrate();
   });
 
   afterEach(async () => {

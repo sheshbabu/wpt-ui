@@ -1,15 +1,14 @@
 const dotenv = require("dotenv");
+const db = require("../../util/db");
 
 dotenv.load();
 
-function getKnex() {
+function initDb() {
   const config = {
     client: "pg",
     connection: process.env.DATABASE_URL
   };
-  return require("knex")(config);
+  db.init(config);
 }
 
-module.exports = {
-  getKnex
-};
+module.exports = initDb;

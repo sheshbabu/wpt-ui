@@ -3,20 +3,15 @@ const path = require("path");
 let knex = null;
 
 function init(config) {
-  initKnex(config);
-  return migrateKnex();
+  const knexConfig = getKnexConfig(config);
+  knex = require("knex")(knexConfig);
 }
 
 function getKnex() {
   return knex;
 }
 
-function initKnex(config) {
-  const knexConfig = getKnexConfig(config);
-  knex = require("knex")(knexConfig);
-}
-
-function migrateKnex() {
+function migrate() {
   const migrationDirPath = path.join(__dirname, "../migrations");
   return knex.migrate.latest({ directory: migrationDirPath });
 }
@@ -43,5 +38,6 @@ function getKnexConfig(config) {
 
 module.exports = {
   init,
+  migrate,
   getKnex
 };

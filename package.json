@@ -4,21 +4,15 @@
   "description": "UI for WebPagetest",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive './!(node_modules)/**/*.spec.js'",
+    "test": "NODE_ENV=test mocha --recursive './!(node_modules|client)/**/*.spec.js'",
     "test:cov": "nyc npm test",
     "lint": "eslint .",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
-  "keywords": [
-    "webpagetest"
-  ],
+  "keywords": ["webpagetest"],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {

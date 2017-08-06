@@ -1,20 +1,19 @@
 const assert = require("assert");
-const proxyquire = require("proxyquire");
-const dbMock = require("../../test/mocks/db");
+const updateTestWptDao = require("./update-test.js");
+const db = require("../../util/db");
+const initDb = require("../../test/helpers/init-db");
 const mappedTestResultFixture = require("../../test/fixtures/wpt/mapped-test-result.json");
 
+initDb();
+
 describe("WptDao - updateTest", () => {
-  const knex = dbMock.getKnex();
+  const knex = db.getKnex();
   const testId = "xyz";
   const jsonUrl = "www.xyz.com";
-  let updateTestWptDao;
 
   beforeEach(async () => {
-    updateTestWptDao = proxyquire("./update-test.js", {
-      "../../util/db": dbMock
-    });
     await knex.migrate.rollback();
-    await knex.migrate.latest();
+    await db.migrate();
     return knex("wpt_reports").insert({
       test_id: testId,
       status: "pending",
