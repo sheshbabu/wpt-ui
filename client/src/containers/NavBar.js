@@ -1,7 +1,7 @@
 import React from "react";
 import AppBar from "material-ui/AppBar";
 import { blue600 } from "material-ui/styles/colors";
-import StartNewTestButton from "../components/StartNewTestButton";
+import NavBarRightButtons from "../components/NavBarRightButtons";
 
 export default function NavBar() {
   const style = {
@@ -11,7 +11,7 @@ export default function NavBar() {
     <AppBar
       title="WebPageTest UI"
       titleStyle={{ color: blue600 }}
-      iconElementRight={<StartNewTestButton />}
+      iconElementRight={<NavBarRightButtons />}
       style={style}
     />
   );
