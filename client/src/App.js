@@ -1,7 +1,7 @@
 import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import NavBar from "./containers/NavBar";
+import NavBar from "./components/NavBar";
 import TestsListPage from "./containers/TestsListPage";
 import { blue600 } from "material-ui/styles/colors";
 
