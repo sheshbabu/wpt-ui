@@ -5,15 +5,17 @@ const testResultFixture = require("../../test/fixtures/wpt/test-result.json");
 const mappedTestResultFixture = require("../../test/fixtures/wpt/mapped-test-result.json");
 
 describe("WptService - updateTest", () => {
-  let updateTest, wptDaoUpdateTestStub, wptDaoGetJsonUrlStub, axiosGetStub;
+  let updateTest, wptDaoUpdateTestStub, wptDaoGetTestStub, axiosGetStub;
+  const testId = "xyz";
+  const jsonUrl = `www.wpt.com/result?testId=${testId}`;
 
   beforeEach(() => {
-    wptDaoGetJsonUrlStub = sinon.stub();
+    wptDaoGetTestStub = sinon.stub();
     wptDaoUpdateTestStub = sinon.stub();
     axiosGetStub = sinon.stub();
     updateTest = proxyquire("./update-test.js", {
       "../../dao/wpt": {
-        getJsonUrl: wptDaoGetJsonUrlStub,
+        getTest: wptDaoGetTestStub,
         updateTest: wptDaoUpdateTestStub
       },
       axios: {
@@ -28,19 +30,16 @@ describe("WptService - updateTest", () => {
     updateTest = null;
   });
 
-  it("should pass the testId to wptDao.getJsonUrl", async () => {
-    const testId = "xyz";
-    wptDaoGetJsonUrlStub.resolves();
+  it("should pass the testId to wptDao.getTest", async () => {
+    wptDaoGetTestStub.resolves({ jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);
-    assert(wptDaoGetJsonUrlStub.calledWith(testId));
+    assert(wptDaoGetTestStub.calledWith(testId));
   });
 
-  it("should make a GET to the url provided by wptDao.getJsonUrl", async () => {
-    const testId = "xyz";
-    const jsonUrl = `www.wpt.com/result?testId=${testId}`;
-    wptDaoGetJsonUrlStub.resolves(jsonUrl);
+  it("should make a GET request to the url provided by wptDao.getTest", async () => {
+    wptDaoGetTestStub.resolves({ jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);
@@ -48,9 +47,7 @@ describe("WptService - updateTest", () => {
   });
 
   it("should map the raw response and pass it to wptDao.updateTest", async () => {
-    const testId = "xyz";
-    const jsonUrl = `www.wpt.com/result?testId=${testId}`;
-    wptDaoGetJsonUrlStub.resolves(jsonUrl);
+    wptDaoGetTestStub.resolves({ jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);

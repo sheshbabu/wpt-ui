@@ -2,8 +2,8 @@ const axios = require("axios");
 const wptDao = require("../../dao/wpt");
 
 async function updateTest(testId) {
-  const jsonUrl = await wptDao.getJsonUrl(testId);
-  const response = await axios.get(jsonUrl);
+  const test = await wptDao.getTest(testId);
+  const response = await axios.get(test.jsonUrl);
   const body = response.data.data;
   const result = mapResponse(body);
   return wptDao.updateTest(testId, result);
