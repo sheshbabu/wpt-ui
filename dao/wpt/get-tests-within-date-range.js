@@ -8,7 +8,7 @@ async function getMultipleTests(startDate, endDate) {
     endDate
   ]);
   if (rows) {
-    return Promise.resolve(rows);
+    return rows;
   } else {
     throw new NoTestsFoundError();
   }

@@ -5,7 +5,7 @@ async function getTests() {
   const knex = db.getKnex();
   const rows = await knex("wpt_reports").limit(10);
   if (rows) {
-    return Promise.resolve(rows);
+    return rows;
   } else {
     throw new NoTestsFoundError();
   }

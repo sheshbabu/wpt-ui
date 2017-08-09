@@ -13,7 +13,6 @@ async function runBuild() {
       cwd: path.resolve(process.cwd(), "./client")
     });
     logger.info("Building client files done");
-    return Promise.resolve();
   } catch (err) {
     logger.info({ err });
   }

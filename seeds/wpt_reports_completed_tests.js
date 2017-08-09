@@ -11,7 +11,6 @@ exports.seed = async function(knex) {
   await insert(knex, testData3);
   await insert(knex, testData4);
   await insert(knex, testData5);
-  return Promise.resolve();
 };
 
 function insert(knex, data) {
