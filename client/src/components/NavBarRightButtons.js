@@ -8,32 +8,44 @@ import { blue600 } from "material-ui/styles/colors";
 export default function NavBarRightButtons() {
   return (
     <div>
-      <FlatButton
-        style={{
-          margin: "6px 6px 12px 12px",
-          color: blue600
-        }}
-        label="Compare Tests"
-        labelPosition="before"
-        icon={<CompareArrows color={blue600} />}
-      />
-      <RaisedButton
-        style={{
-          margin: "6px 6px 12px 12px"
-        }}
-        label="Start New Test"
-        labelPosition="before"
-        labelColor="white"
-        backgroundColor={blue600}
-        icon={
-          <PlayArrow
-            color="white"
-            style={{
-              marginTop: "-2px"
-            }}
-          />
-        }
-      />
+      <CompareTestsButton />
+      <StartNewTestButton />
     </div>
+  );
+}
+
+function CompareTestsButton() {
+  return (
+    <FlatButton
+      style={{
+        margin: "6px 6px 12px 12px",
+        color: blue600
+      }}
+      label="Compare Tests"
+      labelPosition="before"
+      icon={<CompareArrows color={blue600} />}
+    />
+  );
+}
+
+function StartNewTestButton() {
+  return (
+    <RaisedButton
+      style={{
+        margin: "6px 6px 12px 12px"
+      }}
+      label="Start New Test"
+      labelPosition="before"
+      labelColor="white"
+      backgroundColor={blue600}
+      icon={
+        <PlayArrow
+          color="white"
+          style={{
+            marginTop: "-2px"
+          }}
+        />
+      }
+    />
   );
 }
