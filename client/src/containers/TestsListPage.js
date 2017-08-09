@@ -26,7 +26,7 @@ const chartProps = {
   ]
 };
 
-export default function MainChart() {
+export default function TestsListPage() {
   return (
     <div
       style={{

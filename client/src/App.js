@@ -2,7 +2,7 @@ import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import NavBar from "./containers/NavBar";
-import MainChart from "./containers/MainChart";
+import TestsListPage from "./containers/TestsListPage";
 import { blue600 } from "material-ui/styles/colors";
 
 const muiTheme = getMuiTheme({
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <NavBar />
-          <MainChart />
+          <TestsListPage />
         </div>
       </MuiThemeProvider>
     );
