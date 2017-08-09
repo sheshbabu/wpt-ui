@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const db = require("./util/db");
 const client = require("./util/client");
 const logger = require("./util/logger");
+const apiRouter = require("./routes/api");
 const wptHooksRouter = require("./routes/wpt-hooks");
 
 dotenv.load();
@@ -14,12 +15,18 @@ app.use(bodyParser.json());
 app.use(express.static(client.buildPath));
 
 app.use((req, res, next) => {
-  logger.info({ req, res });
-  logger.info({ body: req.body });
+  logger.info({ req });
   next();
 });
 
 app.use("/hooks", wptHooksRouter);
+app.use("/api", apiRouter);
+
+app.use((err, req, res, next) => {
+  const message = err.message || "Oops! Something broke!";
+  logger.error({ req, err });
+  res.status(500).send({ message });
+});
 
 async function start(config) {
   registerConfig(config);
