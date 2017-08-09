@@ -13,6 +13,9 @@
   "lint-staged": {
     "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
+  "nyc": {
+    "reporter": ["lcov", "text", "html"]
+  },
   "keywords": ["webpagetest"],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
