@@ -1,7 +1,7 @@
 const db = require("../../util/db");
 const NoTestsFoundError = require("../../errors/NoTestsFoundError");
 
-async function getMultipleTests(startDate, endDate) {
+async function getTestsWithinDateRange(startDate, endDate) {
   const knex = db.getKnex();
   const rows = await knex("wpt_reports").whereBetween("created_at", [
     startDate,
@@ -14,4 +14,4 @@ async function getMultipleTests(startDate, endDate) {
   }
 }
 
-module.exports = getMultipleTests;
+module.exports = getTestsWithinDateRange;
