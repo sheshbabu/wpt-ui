@@ -6,8 +6,12 @@ const logger = require("./logger");
 const buildPath = path.resolve(process.cwd(), "./client/build");
 
 async function runBuild() {
-  const exec = util.promisify(child_process.exec);
+  if (process.env.NODE_ENV === "development") {
+    return;
+  }
+
   try {
+    const exec = util.promisify(child_process.exec);
     logger.info("Building client files ...");
     await exec("npm run build", {
       cwd: path.resolve(process.cwd(), "./client")
