@@ -26,19 +26,35 @@ const chartProps = {
   ]
 };
 
-export default function TestsListPage() {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        marginTop: 20
-      }}
-    >
-      <FilterToolbar />
-      <BarChart {...chartProps} />
-      <TestsTable />
-    </div>
-  );
+export default class TestsListPage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      tests: []
+    };
+  }
+
+  async componentDidMount() {
+    const response = await fetch("/api/tests");
+    this.setState({
+      tests: await response.json()
+    });
+  }
+
+  render() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: 20
+        }}
+      >
+        <FilterToolbar />
+        <BarChart {...chartProps} />
+        <TestsTable tests={this.state.tests} />
+      </div>
+    );
+  }
 }
