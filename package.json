@@ -4,7 +4,9 @@
   "description": "UI for WebPagetest",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
+    "start": "concurrently 'npm run start:server' 'npm run start:client'",
+    "start:server": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
+    "start:client": "cd client && NODE_ENV=development npm run start",
     "test": "NODE_ENV=test mocha --recursive './!(node_modules|client)/**/*.spec.js'",
     "test:cov": "nyc npm test",
     "lint": "eslint .",
@@ -21,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "eslint": "^4.2.0",
     "eslint-config-react-app": "^1.0.5",
