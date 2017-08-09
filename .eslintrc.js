@@ -8,5 +8,8 @@ module.exports = {
     es6: true
   },
   extends: ["eslint:recommended"],
-  plugins: ["json"]
+  plugins: ["json"],
+  rules: {
+    "no-unused-vars": ["error", { argsIgnorePattern: "next" }]
+  }
 };
