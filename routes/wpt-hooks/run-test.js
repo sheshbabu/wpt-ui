@@ -1,9 +1,7 @@
-const wptService = require("../../services/wpt");
+const createTestApiRouteHandler = require("../api/create-test");
 
 function runTest(req, res) {
-  const config = res.app.locals.config;
-  wptService.runTest(config);
-  res.end();
+  return createTestApiRouteHandler(req, res);
 }
 
 module.exports = runTest;
