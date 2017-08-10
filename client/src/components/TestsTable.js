@@ -39,9 +39,17 @@ function getColumnHeaders(fields) {
 function getRows(tests, fields) {
   return tests.map(test => {
     const columns = fields.map((field, index) => {
+      let value = test[field.columnName];
+      value = parseInt(value, 10);
+      const valueType = field.valueType || "";
+      if (valueType === "time") {
+        value = formatTime(value);
+      } else if (valueType === "bytes") {
+        value = formatBytes(value);
+      }
       return (
         <TableRowColumn key={index} style={{ width: 170 }}>
-          {test[field.columnName]}
+          {value}
         </TableRowColumn>
       );
     });
@@ -51,4 +59,18 @@ function getRows(tests, fields) {
       </TableRow>
     );
   });
+}
+
+function formatTime(value) {
+  return (value = value >= 1000 ? value / 1000 + "s" : value + "ms");
+}
+
+function formatBytes(value) {
+  if (value >= 1024 * 1024) {
+    return (value / (1024 * 1024)).toFixed(2) + "MB";
+  } else if (value >= 1024) {
+    return (value / 1024).toFixed(2) + "KB";
+  } else {
+    return value + "B";
+  }
 }

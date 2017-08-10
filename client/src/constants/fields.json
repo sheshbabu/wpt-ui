@@ -41,31 +41,38 @@
   },
   {
     "columnName": "fv_ttfb",
-    "displayName": "TTFB (First View)"
+    "displayName": "TTFB (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_first_paint",
-    "displayName": "First Paint (First View)"
+    "displayName": "First Paint (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_start_render",
-    "displayName": "Start Render (First View)"
+    "displayName": "Start Render (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_last_visual_change",
-    "displayName": "Last Visual Change (First View)"
+    "displayName": "Last Visual Change (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_visual_complete",
-    "displayName": "Visual Complete (First View)"
+    "displayName": "Visual Complete (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_load_time",
-    "displayName": "Load Time (First View)"
+    "displayName": "Load Time (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_fully_loaded",
-    "displayName": "Fully Loaded (First View)"
+    "displayName": "Fully Loaded (First View)",
+    "valueType": "time"
   },
   {
     "columnName": "fv_speed_index",
@@ -77,7 +84,8 @@
   },
   {
     "columnName": "fv_bytes_downloaded",
-    "displayName": "Bytes Downloaded (First View)"
+    "displayName": "Bytes Downloaded (First View)",
+    "valueType": "bytes"
   },
   {
     "columnName": "fv_domain_breakdown",
@@ -89,31 +97,38 @@
   },
   {
     "columnName": "rv_ttfb",
-    "displayName": "TTFB (Repeat View)"
+    "displayName": "TTFB (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_first_paint",
-    "displayName": "First Paint (Repeat View)"
+    "displayName": "First Paint (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_start_render",
-    "displayName": "Start Render (Repeat View)"
+    "displayName": "Start Render (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_last_visual_change",
-    "displayName": "Last Visual Change (Repeat View)"
+    "displayName": "Last Visual Change (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_visual_complete",
-    "displayName": "Visual Complete (Repeat View)"
+    "displayName": "Visual Complete (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_load_time",
-    "displayName": "Load Time (Repeat View)"
+    "displayName": "Load Time (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_fully_loaded",
-    "displayName": "Fully Loaded (Repeat View)"
+    "displayName": "Fully Loaded (Repeat View)",
+    "valueType": "time"
   },
   {
     "columnName": "rv_speed_index",
@@ -125,7 +140,8 @@
   },
   {
     "columnName": "rv_bytes_downloaded",
-    "displayName": "Bytes Downloaded (Repeat View)"
+    "displayName": "Bytes Downloaded (Repeat View)",
+    "valueType": "bytes"
   },
   {
     "columnName": "rv_domain_breakdown",
