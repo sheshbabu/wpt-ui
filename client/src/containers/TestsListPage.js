@@ -4,28 +4,6 @@ import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TestsTable from "../components/TestsTable";
 
-const chartProps = {
-  width: 900,
-  height: 300,
-  labels: [
-    moment("2017-08-06 12:00:00.801277+08").format("YYYY MMM DD"),
-    moment("2017-09-07 12:00:00.801277+08").format("YYYY MMM DD"),
-    moment("2017-09-07 12:00:00.801277+08").format("YYYY MMM DD"),
-    moment("2017-09-20 12:00:00.801277+08").format("YYYY MMM DD"),
-    moment("2017-10-30 12:00:00.801277+08").format("YYYY MMM DD")
-  ],
-  datasets: [
-    {
-      label: "FirstView TTFB",
-      data: [300, 350, 350, 320, 300]
-    },
-    {
-      label: "FirstView First Paint",
-      data: [1000, 1200, 1200, 1150, 1000]
-    }
-  ]
-};
-
 export default class TestsListPage extends React.Component {
   constructor() {
     super();
@@ -52,9 +30,31 @@ export default class TestsListPage extends React.Component {
         }}
       >
         <FilterToolbar />
-        <BarChart {...chartProps} />
+        <BarChart
+          width={900}
+          height={300}
+          labels={getChartLabels(this.state.tests)}
+          datasets={getChartDatasets(this.state.tests)}
+        />
         <TestsTable tests={this.state.tests} />
       </div>
     );
   }
+}
+
+function getChartLabels(tests) {
+  return tests.map(test => moment(test.created_at).format("YYYY MMM DD"));
+}
+
+function getChartDatasets(tests) {
+  return [
+    {
+      label: "FirstView TTFB",
+      data: tests.map(test => test.fv_ttfb)
+    },
+    {
+      label: "FirstView First Paint",
+      data: tests.map(test => test.fv_first_paint)
+    }
+  ];
 }
