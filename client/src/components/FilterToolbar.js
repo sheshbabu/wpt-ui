@@ -11,34 +11,6 @@ export default function FilterToolbar(props) {
     <Paper style={{ width: 900, marginBottom: 20 }} zDepth={1}>
       <Toolbar style={{ backgroundColor: "white" }}>
         <ToolbarGroup>
-          <DatePicker
-            floatingLabelText="Start Date"
-            floatingLabelFixed={true}
-            hintText="Select"
-            container="inline"
-            mode="landscape"
-            style={{ width: 170 }}
-            inputStyle={{ marginTop: 12 }}
-            textFieldStyle={{ marginTop: -1 }}
-            underlineShow={false}
-            onChange={props.onStartDateChange}
-            autoOk
-          />
-          <DatePicker
-            floatingLabelText="End Date"
-            floatingLabelFixed={true}
-            hintText="Select"
-            container="inline"
-            mode="landscape"
-            style={{ width: 170 }}
-            inputStyle={{ marginTop: 12 }}
-            textFieldStyle={{ marginTop: -1 }}
-            underlineShow={false}
-            onChange={props.onEndDateChange}
-            autoOk
-          />
-        </ToolbarGroup>
-        <ToolbarGroup>
           <MetricsSelectField
             fields={props.fields}
             floatingLabelText="Metrics 1"
@@ -50,6 +22,16 @@ export default function FilterToolbar(props) {
             floatingLabelText="Metrics 2"
             onChange={props.onMetric2Change}
             selectedField={props.metric2}
+          />
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <DateField
+            floatingLabelText="Start Date"
+            onChange={props.onStartDateChange}
+          />
+          <DateField
+            floatingLabelText="End Date"
+            onChange={props.onEndDateChange}
           />
         </ToolbarGroup>
       </Toolbar>
@@ -80,5 +62,23 @@ function MetricsSelectField(props) {
     >
       {items}
     </SelectField>
+  );
+}
+
+function DateField(props) {
+  return (
+    <DatePicker
+      floatingLabelText={props.floatingLabelText}
+      floatingLabelFixed={true}
+      hintText="Select"
+      container="inline"
+      mode="landscape"
+      style={{ width: 170 }}
+      inputStyle={{ marginTop: 12 }}
+      textFieldStyle={{ marginTop: -1 }}
+      underlineShow={false}
+      onChange={props.onChange}
+      autoOk
+    />
   );
 }
