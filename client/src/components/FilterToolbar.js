@@ -23,6 +23,7 @@ export default function FilterToolbar(props) {
             inputStyle={{ marginTop: 12 }}
             textFieldStyle={{ marginTop: -1 }}
             underlineShow={false}
+            onChange={props.onStartDateChange}
             autoOk
           />
           <DatePicker
@@ -35,26 +36,34 @@ export default function FilterToolbar(props) {
             inputStyle={{ marginTop: 12 }}
             textFieldStyle={{ marginTop: -1 }}
             underlineShow={false}
+            onChange={props.onEndDateChange}
             autoOk
           />
         </ToolbarGroup>
         <ToolbarGroup>
-          <MetricsSelectField />
-          <MetricsSelectField />
+          <MetricsSelectField
+            floatingLabelText="Metrics 1"
+            onChange={props.onMetric1Change}
+          />
+          <MetricsSelectField
+            floatingLabelText="Metrics 2"
+            onChange={props.onMetric2Change}
+          />
         </ToolbarGroup>
       </Toolbar>
     </Paper>
   );
 }
 
-function MetricsSelectField() {
+function MetricsSelectField(props) {
   return (
     <SelectField
-      floatingLabelText="Metric 1"
+      floatingLabelText={props.floatingLabelText}
       value={1}
       style={{ width: 200 }}
       selectedMenuItemStyle={{ color: blue600 }}
       underlineShow={false}
+      onChange={props.onChange}
     >
       <Subheader>First View</Subheader>
       <MenuItem value={1} primaryText="Time To First Byte" />

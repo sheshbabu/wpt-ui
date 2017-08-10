@@ -1,22 +1,62 @@
 import React from "react";
+import autobind from "react-autobind";
 import moment from "moment";
+import queryString from "query-string";
 import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TestsTable from "../components/TestsTable";
 
-export default class TestsListPage extends React.Component {
+export default class TestsListPage extends React.PureComponent {
   constructor() {
     super();
+    autobind(this);
     this.state = {
-      tests: []
+      tests: [],
+      startDate: "",
+      endDate: "",
+      metric1: "",
+      metric2: ""
     };
   }
 
-  async componentDidMount() {
-    const response = await fetch("/api/tests");
-    this.setState({
-      tests: await response.json()
-    });
+  componentDidMount() {
+    this.fetchTests();
+  }
+
+  async fetchTests() {
+    let url = "/api/tests";
+    const { startDate, endDate } = this.state;
+
+    if (startDate && endDate) {
+      const queryParams = {};
+      queryParams.start_date = startDate;
+      queryParams.end_date = endDate;
+      url = `${url}?${queryString.stringify(queryParams)}`;
+    } else if ((startDate && !endDate) || (!startDate && endDate)) {
+      return;
+    }
+
+    const response = await fetch(url);
+    const tests = await response.json();
+    this.setState({ tests });
+  }
+
+  handleStartDateChange(event, date) {
+    this.setState({ startDate: moment(date).format("YYYY-MM-DD") });
+    this.fetchTests();
+  }
+
+  handleEndDateChange(event, date) {
+    this.setState({ endDate: moment(date).format("YYYY-MM-DD") });
+    this.fetchTests();
+  }
+
+  handleMetric1Change(event, key) {
+    this.setState({ metric1: key });
+  }
+
+  handleMetric2Change(event, key) {
+    this.setState({ metric2: key });
   }
 
   render() {
@@ -29,7 +69,12 @@ export default class TestsListPage extends React.Component {
           marginTop: 20
         }}
       >
-        <FilterToolbar />
+        <FilterToolbar
+          onStartDateChange={this.handleStartDateChange}
+          onEndDateChange={this.handleEndDateChange}
+          onMetric1Change={this.handleMetric1Change}
+          onMetric2Change={this.handleMetric2Change}
+        />
         <BarChart
           width={900}
           height={300}
