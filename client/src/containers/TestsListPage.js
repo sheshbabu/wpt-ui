@@ -5,6 +5,7 @@ import queryString from "query-string";
 import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TestsTable from "../components/TestsTable";
+import FIELDS from "../constants/fields.json";
 
 export default class TestsListPage extends React.PureComponent {
   constructor() {
@@ -14,8 +15,8 @@ export default class TestsListPage extends React.PureComponent {
       tests: [],
       startDate: "",
       endDate: "",
-      metric1: "",
-      metric2: ""
+      metric1: "fv_start_render",
+      metric2: "fv_load_time"
     };
   }
 
@@ -52,11 +53,15 @@ export default class TestsListPage extends React.PureComponent {
   }
 
   handleMetric1Change(event, key) {
-    this.setState({ metric1: key });
+    const fields = getDisplayableFields();
+    const columnName = fields[key].columnName;
+    this.setState({ metric1: columnName });
   }
 
   handleMetric2Change(event, key) {
-    this.setState({ metric2: key });
+    const fields = getDisplayableFields();
+    const columnName = fields[key].columnName;
+    this.setState({ metric2: columnName });
   }
 
   render() {
@@ -70,16 +75,21 @@ export default class TestsListPage extends React.PureComponent {
         }}
       >
         <FilterToolbar
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          metric1={this.state.metric1}
+          metric2={this.state.metric2}
           onStartDateChange={this.handleStartDateChange}
           onEndDateChange={this.handleEndDateChange}
           onMetric1Change={this.handleMetric1Change}
           onMetric2Change={this.handleMetric2Change}
+          fields={getDisplayableFields()}
         />
         <BarChart
           width={900}
           height={300}
           labels={getChartLabels(this.state.tests)}
-          datasets={getChartDatasets(this.state.tests)}
+          datasets={getChartDatasets(this.state)}
         />
         <TestsTable tests={this.state.tests} />
       </div>
@@ -91,15 +101,40 @@ function getChartLabels(tests) {
   return tests.map(test => moment(test.created_at).format("YYYY MMM DD"));
 }
 
-function getChartDatasets(tests) {
+function getChartDatasets(state) {
+  const fields = getDisplayableFields();
+  const label1 = fields.find(field => field.columnName === state.metric1);
+  const label2 = fields.find(field => field.columnName === state.metric2);
   return [
     {
-      label: "FirstView TTFB",
-      data: tests.map(test => test.fv_ttfb)
+      label: label1.displayName,
+      data: state.tests.map(test => test[state.metric1])
     },
     {
-      label: "FirstView First Paint",
-      data: tests.map(test => test.fv_first_paint)
+      label: label2.displayName,
+      data: state.tests.map(test => test[state.metric2])
     }
   ];
+}
+
+function getDisplayableFields() {
+  return FIELDS.filter(field => {
+    const omittedFields = [
+      "created_at",
+      "test_id",
+      "status",
+      "url",
+      "json_url",
+      "summary_url",
+      "location",
+      "connectivity",
+      "browser_name",
+      "browser_version",
+      "fv_domain_breakdown",
+      "fv_content_breakdown",
+      "rv_domain_breakdown",
+      "rv_content_breakdown"
+    ];
+    return !omittedFields.includes(field.columnName);
+  });
 }

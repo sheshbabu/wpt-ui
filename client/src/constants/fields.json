@@ -1,0 +1,138 @@
+[
+  {
+    "columnName": "created_at",
+    "displayName": "Created At"
+  },
+  {
+    "columnName": "test_id",
+    "displayName": "Test Id"
+  },
+  {
+    "columnName": "status",
+    "displayName": "Status"
+  },
+  {
+    "columnName": "url",
+    "displayName": "Url"
+  },
+  {
+    "columnName": "json_url",
+    "displayName": "Json Url"
+  },
+  {
+    "columnName": "summary_url",
+    "displayName": "Summary Url"
+  },
+  {
+    "columnName": "location",
+    "displayName": "Location"
+  },
+  {
+    "columnName": "connectivity",
+    "displayName": "Connectivity"
+  },
+  {
+    "columnName": "browser_name",
+    "displayName": "Browser Name"
+  },
+  {
+    "columnName": "browser_version",
+    "displayName": "Browser Version"
+  },
+  {
+    "columnName": "fv_ttfb",
+    "displayName": "FV TTFB"
+  },
+  {
+    "columnName": "fv_first_paint",
+    "displayName": "FV First Paint"
+  },
+  {
+    "columnName": "fv_start_render",
+    "displayName": "FV Start Render"
+  },
+  {
+    "columnName": "fv_last_visual_change",
+    "displayName": "FV Last Visual Change"
+  },
+  {
+    "columnName": "fv_visual_complete",
+    "displayName": "FV Visual Complete"
+  },
+  {
+    "columnName": "fv_load_time",
+    "displayName": "FV Load Time"
+  },
+  {
+    "columnName": "fv_fully_loaded",
+    "displayName": "FV Fully Loaded"
+  },
+  {
+    "columnName": "fv_speed_index",
+    "displayName": "FV Speed Index"
+  },
+  {
+    "columnName": "fv_requests_made",
+    "displayName": "FV Requests Made"
+  },
+  {
+    "columnName": "fv_bytes_downloaded",
+    "displayName": "FV Bytes Downloaded"
+  },
+  {
+    "columnName": "fv_domain_breakdown",
+    "displayName": "FV Domain Breakdown"
+  },
+  {
+    "columnName": "fv_content_breakdown",
+    "displayName": "FV Content Breakdown"
+  },
+  {
+    "columnName": "rv_ttfb",
+    "displayName": "RV TTFB"
+  },
+  {
+    "columnName": "rv_first_paint",
+    "displayName": "RV First Paint"
+  },
+  {
+    "columnName": "rv_start_render",
+    "displayName": "RV Start Render"
+  },
+  {
+    "columnName": "rv_last_visual_change",
+    "displayName": "RV Last Visual Change"
+  },
+  {
+    "columnName": "rv_visual_complete",
+    "displayName": "RV Visual Complete"
+  },
+  {
+    "columnName": "rv_load_time",
+    "displayName": "RV Load Time"
+  },
+  {
+    "columnName": "rv_fully_loaded",
+    "displayName": "RV Fully Loaded"
+  },
+  {
+    "columnName": "rv_speed_index",
+    "displayName": "RV Speed Index"
+  },
+  {
+    "columnName": "rv_requests_made",
+    "displayName": "RV Requests Made"
+  },
+  {
+    "columnName": "rv_bytes_downloaded",
+    "displayName": "RV Bytes Downloaded"
+  },
+  {
+    "columnName": "rv_domain_breakdown",
+    "displayName": "RV Domain Breakdown"
+  },
+  {
+    "columnName": "rv_content_breakdown",
+    "displayName": "RV Content Breakdown"
+  }
+]

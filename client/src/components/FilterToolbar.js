@@ -4,8 +4,6 @@ import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
 import DatePicker from "material-ui/DatePicker";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import Subheader from "material-ui/Subheader";
-import Divider from "material-ui/Divider";
 import { blue600 } from "material-ui/styles/colors";
 
 export default function FilterToolbar(props) {
@@ -42,12 +40,16 @@ export default function FilterToolbar(props) {
         </ToolbarGroup>
         <ToolbarGroup>
           <MetricsSelectField
+            fields={props.fields}
             floatingLabelText="Metrics 1"
             onChange={props.onMetric1Change}
+            selectedField={props.metric1}
           />
           <MetricsSelectField
+            fields={props.fields}
             floatingLabelText="Metrics 2"
             onChange={props.onMetric2Change}
+            selectedField={props.metric2}
           />
         </ToolbarGroup>
       </Toolbar>
@@ -56,38 +58,27 @@ export default function FilterToolbar(props) {
 }
 
 function MetricsSelectField(props) {
+  const items = props.fields.map((field, index) => {
+    return (
+      <MenuItem key={index} value={index} primaryText={field.displayName} />
+    );
+  });
+  let selectedIndex = 0;
+  props.fields.forEach((field, index) => {
+    if (field.columnName === props.selectedField) {
+      selectedIndex = index;
+    }
+  });
   return (
     <SelectField
       floatingLabelText={props.floatingLabelText}
-      value={1}
+      value={selectedIndex}
       style={{ width: 200 }}
       selectedMenuItemStyle={{ color: blue600 }}
       underlineShow={false}
       onChange={props.onChange}
     >
-      <Subheader>First View</Subheader>
-      <MenuItem value={1} primaryText="Time To First Byte" />
-      <MenuItem primaryText="First Paint" />
-      <MenuItem primaryText="Start Render" />
-      <MenuItem primaryText="Last Visual Change" />
-      <MenuItem primaryText="Visual Complete" />
-      <MenuItem primaryText="Load Time" />
-      <MenuItem primaryText="Fully Loaded" />
-      <MenuItem primaryText="Speed Index" />
-      <MenuItem primaryText="Requests Made" />
-      <MenuItem value={4} primaryText="Bytes Downloaded" />
-      <Divider />
-      <Subheader>Repeat View</Subheader>
-      <MenuItem primaryText="Time To First Byte" />
-      <MenuItem primaryText="First Paint" />
-      <MenuItem primaryText="Start Render" />
-      <MenuItem primaryText="Last Visual Change" />
-      <MenuItem primaryText="Visual Complete" />
-      <MenuItem primaryText="Load Time" />
-      <MenuItem primaryText="Fully Loaded" />
-      <MenuItem primaryText="Speed Index" />
-      <MenuItem primaryText="Requests Made" />
-      <MenuItem primaryText="Bytes Downloaded" />
+      {items}
     </SelectField>
   );
 }
