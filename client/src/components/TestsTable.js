@@ -37,7 +37,7 @@ function getColumnHeaders(fields) {
 }
 
 function getRows(tests, fields) {
-  return tests.map(test => {
+  return tests.map((test, rowIndex) => {
     const columns = fields.map((field, index) => {
       let value = test[field.columnName];
       value = parseInt(value, 10);
@@ -54,7 +54,10 @@ function getRows(tests, fields) {
       );
     });
     return (
-      <TableRow key={test.test_id}>
+      <TableRow
+        key={test.test_id}
+        style={{ background: rowIndex % 2 ? "#fafafa" : "white" }}
+      >
         {columns}
       </TableRow>
     );
