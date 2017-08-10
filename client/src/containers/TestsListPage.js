@@ -91,7 +91,7 @@ export default class TestsListPage extends React.PureComponent {
           labels={getChartLabels(this.state.tests)}
           datasets={getChartDatasets(this.state)}
         />
-        <TestsTable tests={this.state.tests} />
+        <TestsTable tests={this.state.tests} fields={getDisplayableFields()} />
       </div>
     );
   }

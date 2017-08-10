@@ -41,98 +41,98 @@
   },
   {
     "columnName": "fv_ttfb",
-    "displayName": "FV TTFB"
+    "displayName": "TTFB (First View)"
   },
   {
     "columnName": "fv_first_paint",
-    "displayName": "FV First Paint"
+    "displayName": "First Paint (First View)"
   },
   {
     "columnName": "fv_start_render",
-    "displayName": "FV Start Render"
+    "displayName": "Start Render (First View)"
   },
   {
     "columnName": "fv_last_visual_change",
-    "displayName": "FV Last Visual Change"
+    "displayName": "Last Visual Change (First View)"
   },
   {
     "columnName": "fv_visual_complete",
-    "displayName": "FV Visual Complete"
+    "displayName": "Visual Complete (First View)"
   },
   {
     "columnName": "fv_load_time",
-    "displayName": "FV Load Time"
+    "displayName": "Load Time (First View)"
   },
   {
     "columnName": "fv_fully_loaded",
-    "displayName": "FV Fully Loaded"
+    "displayName": "Fully Loaded (First View)"
   },
   {
     "columnName": "fv_speed_index",
-    "displayName": "FV Speed Index"
+    "displayName": "Speed Index (First View)"
   },
   {
     "columnName": "fv_requests_made",
-    "displayName": "FV Requests Made"
+    "displayName": "Requests Made (First View)"
   },
   {
     "columnName": "fv_bytes_downloaded",
-    "displayName": "FV Bytes Downloaded"
+    "displayName": "Bytes Downloaded (First View)"
   },
   {
     "columnName": "fv_domain_breakdown",
-    "displayName": "FV Domain Breakdown"
+    "displayName": "Domain Breakdown (First View)"
   },
   {
     "columnName": "fv_content_breakdown",
-    "displayName": "FV Content Breakdown"
+    "displayName": "Content Breakdown (First View)"
   },
   {
     "columnName": "rv_ttfb",
-    "displayName": "RV TTFB"
+    "displayName": "TTFB (Repeat View)"
   },
   {
     "columnName": "rv_first_paint",
-    "displayName": "RV First Paint"
+    "displayName": "First Paint (Repeat View)"
   },
   {
     "columnName": "rv_start_render",
-    "displayName": "RV Start Render"
+    "displayName": "Start Render (Repeat View)"
   },
   {
     "columnName": "rv_last_visual_change",
-    "displayName": "RV Last Visual Change"
+    "displayName": "Last Visual Change (Repeat View)"
   },
   {
     "columnName": "rv_visual_complete",
-    "displayName": "RV Visual Complete"
+    "displayName": "Visual Complete (Repeat View)"
   },
   {
     "columnName": "rv_load_time",
-    "displayName": "RV Load Time"
+    "displayName": "Load Time (Repeat View)"
   },
   {
     "columnName": "rv_fully_loaded",
-    "displayName": "RV Fully Loaded"
+    "displayName": "Fully Loaded (Repeat View)"
   },
   {
     "columnName": "rv_speed_index",
-    "displayName": "RV Speed Index"
+    "displayName": "Speed Index (Repeat View)"
   },
   {
     "columnName": "rv_requests_made",
-    "displayName": "RV Requests Made"
+    "displayName": "Requests Made (Repeat View)"
   },
   {
     "columnName": "rv_bytes_downloaded",
-    "displayName": "RV Bytes Downloaded"
+    "displayName": "Bytes Downloaded (Repeat View)"
   },
   {
     "columnName": "rv_domain_breakdown",
-    "displayName": "RV Domain Breakdown"
+    "displayName": "Domain Breakdown (Repeat View)"
   },
   {
     "columnName": "rv_content_breakdown",
-    "displayName": "RV Content Breakdown"
+    "displayName": "Content Breakdown (Repeat View)"
   }
 ]

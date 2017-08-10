@@ -17,7 +17,7 @@ export default function FilterToolbar(props) {
             hintText="Select"
             container="inline"
             mode="landscape"
-            style={{ width: 200 }}
+            style={{ width: 170 }}
             inputStyle={{ marginTop: 12 }}
             textFieldStyle={{ marginTop: -1 }}
             underlineShow={false}
@@ -30,7 +30,7 @@ export default function FilterToolbar(props) {
             hintText="Select"
             container="inline"
             mode="landscape"
-            style={{ width: 200 }}
+            style={{ width: 170 }}
             inputStyle={{ marginTop: 12 }}
             textFieldStyle={{ marginTop: -1 }}
             underlineShow={false}
@@ -73,7 +73,7 @@ function MetricsSelectField(props) {
     <SelectField
       floatingLabelText={props.floatingLabelText}
       value={selectedIndex}
-      style={{ width: 200 }}
+      style={{ width: 270 }}
       selectedMenuItemStyle={{ color: blue600 }}
       underlineShow={false}
       onChange={props.onChange}
