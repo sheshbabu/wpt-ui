@@ -13,13 +13,13 @@ export default function FilterToolbar(props) {
         <ToolbarGroup>
           <MetricsSelectField
             fields={props.fields}
-            floatingLabelText="Metrics 1"
+            floatingLabelText="Metric 1"
             onChange={props.onMetric1Change}
             selectedField={props.metric1}
           />
           <MetricsSelectField
             fields={props.fields}
-            floatingLabelText="Metrics 2"
+            floatingLabelText="Metric 2"
             onChange={props.onMetric2Change}
             selectedField={props.metric2}
           />
