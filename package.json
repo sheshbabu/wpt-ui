@@ -13,12 +13,22 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "nyc": {
-    "reporter": ["lcov", "text", "html"]
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
   },
-  "keywords": ["webpagetest"],
+  "keywords": [
+    "webpagetest"
+  ],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {
@@ -47,6 +57,8 @@
     "bunyan": "^1.8.10",
     "express": "^4.15.3",
     "knex": "^0.13.0",
-    "pg": "^7.0.2"
+    "pg": "^7.0.2",
+    "query-string": "^5.0.0",
+    "react-autobind": "^1.0.6"
   }
 }
