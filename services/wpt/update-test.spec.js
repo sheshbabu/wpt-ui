@@ -31,7 +31,7 @@ describe("WptService - updateTest", () => {
   });
 
   it("should pass the testId to wptDao.getTest", async () => {
-    wptDaoGetTestStub.resolves({ jsonUrl });
+    wptDaoGetTestStub.resolves({ json_url: jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);
@@ -39,7 +39,7 @@ describe("WptService - updateTest", () => {
   });
 
   it("should make a GET request to the url provided by wptDao.getTest", async () => {
-    wptDaoGetTestStub.resolves({ jsonUrl });
+    wptDaoGetTestStub.resolves({ json_url: jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);
@@ -47,7 +47,7 @@ describe("WptService - updateTest", () => {
   });
 
   it("should map the raw response and pass it to wptDao.updateTest", async () => {
-    wptDaoGetTestStub.resolves({ jsonUrl });
+    wptDaoGetTestStub.resolves({ json_url: jsonUrl });
     axiosGetStub.resolves({ data: testResultFixture });
     wptDaoUpdateTestStub.resolves();
     await updateTest(testId);
