@@ -85,7 +85,7 @@ function DateField(props) {
       container="inline"
       mode="landscape"
       style={{ width: 170 }}
-      inputStyle={{ marginTop: 12 }}
+      inputStyle={{ marginTop: 12, cursor: "pointer" }}
       textFieldStyle={{ marginTop: -1 }}
       underlineShow={false}
       onChange={props.onChange}
