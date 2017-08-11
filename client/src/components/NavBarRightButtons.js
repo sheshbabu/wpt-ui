@@ -3,7 +3,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import PlayArrow from "material-ui/svg-icons/av/play-arrow";
 import CompareArrows from "material-ui/svg-icons/action/compare-arrows";
-import { blue600 } from "material-ui/styles/colors";
 
 export default function NavBarRightButtons() {
   return (
@@ -17,13 +16,13 @@ export default function NavBarRightButtons() {
 function CompareTestsButton() {
   return (
     <FlatButton
+      primary
       style={{
-        margin: "6px 6px 12px 12px",
-        color: blue600
+        margin: "6px 6px 12px 12px"
       }}
       label="Compare Tests"
       labelPosition="before"
-      icon={<CompareArrows color={blue600} />}
+      icon={<CompareArrows />}
     />
   );
 }
@@ -34,10 +33,10 @@ function StartNewTestButton() {
       style={{
         margin: "6px 6px 12px 12px"
       }}
+      primary
       label="Start New Test"
       labelPosition="before"
       labelColor="white"
-      backgroundColor={blue600}
       icon={
         <PlayArrow
           color="white"

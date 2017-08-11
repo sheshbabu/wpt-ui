@@ -6,7 +6,6 @@ import SelectField from "material-ui/SelectField";
 import Divider from "material-ui/Divider";
 import Subheader from "material-ui/Subheader";
 import MenuItem from "material-ui/MenuItem";
-import { blue600 } from "material-ui/styles/colors";
 
 export default function FilterToolbar(props) {
   return (
@@ -65,7 +64,6 @@ function MetricsSelectField(props) {
       floatingLabelText={props.floatingLabelText}
       value={selectedIndex}
       style={{ width: 270 }}
-      selectedMenuItemStyle={{ color: blue600 }}
       underlineShow={false}
       onChange={props.onChange}
     >
