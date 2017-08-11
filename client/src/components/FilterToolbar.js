@@ -3,6 +3,8 @@ import Paper from "material-ui/Paper";
 import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
 import DatePicker from "material-ui/DatePicker";
 import SelectField from "material-ui/SelectField";
+import Divider from "material-ui/Divider";
+import Subheader from "material-ui/Subheader";
 import MenuItem from "material-ui/MenuItem";
 import { blue600 } from "material-ui/styles/colors";
 
@@ -40,10 +42,17 @@ export default function FilterToolbar(props) {
 }
 
 function MetricsSelectField(props) {
-  const items = props.fields.map((field, index) => {
-    return (
+  const firstViewItems = [];
+  const repeatViewItems = [];
+  props.fields.forEach((field, index) => {
+    const item = (
       <MenuItem key={index} value={index} primaryText={field.displayName} />
     );
+    if (field.runType === "First View") {
+      firstViewItems.push(item);
+    } else {
+      repeatViewItems.push(item);
+    }
   });
   let selectedIndex = 0;
   props.fields.forEach((field, index) => {
@@ -60,7 +69,11 @@ function MetricsSelectField(props) {
       underlineShow={false}
       onChange={props.onChange}
     >
-      {items}
+      <Subheader>First View</Subheader>
+      {firstViewItems}
+      <Divider />
+      <Subheader>Repeat View</Subheader>
+      {repeatViewItems}
     </SelectField>
   );
 }

@@ -13,7 +13,7 @@ export default function TestsTable(props) {
   return (
     <Paper style={{ width: 900, marginTop: 20, marginBottom: 20 }} zDepth={1}>
       <Table bodyStyle={{ overflow: "visible" }} multiSelectable>
-        <TableHeader>
+        <TableHeader displaySelectAll={false}>
           <TableRow>
             {getColumnHeaders(props.fields)}
           </TableRow>
@@ -30,7 +30,12 @@ function getColumnHeaders(fields) {
   return fields.map((field, index) => {
     return (
       <TableHeaderColumn key={index} style={{ width: field.tableColumnWidth }}>
-        {field.displayName}
+        <div style={{ color: "#666" }}>
+          {field.displayName}
+        </div>
+        <div style={{ fontSize: 10, marginTop: 5 }}>
+          {field.runType}
+        </div>
       </TableHeaderColumn>
     );
   });
