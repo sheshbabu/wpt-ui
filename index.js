@@ -30,9 +30,11 @@ app.use((err, req, res, next) => {
 
 async function start(config) {
   registerConfig(config);
+  // Eagerly listening to port before DB migration and client build finishes
+  // To prevent Heroku from throwing error that process failed to bind to port in 60s
+  startServer();
   await initDb();
   await client.runBuild();
-  startServer();
 }
 
 function registerConfig(config) {
@@ -52,7 +54,7 @@ async function initDb() {
 
 function startServer() {
   const port = app.locals.config.port;
-  logger.info(`Staring app in port: ${port}`);
+  logger.info(`Listening in port: ${port}`);
   app.listen(port);
 }
 
