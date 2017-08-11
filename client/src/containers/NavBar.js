@@ -11,8 +11,14 @@ export default function NavBar() {
     <AppBar
       title="WebPageTest UI"
       titleStyle={{ color: blue600 }}
-      iconElementRight={<NavBarRightButtons />}
+      iconElementRight={
+        <NavBarRightButtons onStartNewTestClick={handleStartNewTestClick} />
+      }
       style={style}
     />
   );
+}
+
+function handleStartNewTestClick() {
+  fetch("/api/tests", { method: "POST" });
 }

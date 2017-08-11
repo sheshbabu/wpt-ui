@@ -4,11 +4,11 @@ import FlatButton from "material-ui/FlatButton";
 import PlayArrow from "material-ui/svg-icons/av/play-arrow";
 import CompareArrows from "material-ui/svg-icons/action/compare-arrows";
 
-export default function NavBarRightButtons() {
+export default function NavBarRightButtons(props) {
   return (
     <div>
       <CompareTestsButton />
-      <StartNewTestButton />
+      <StartNewTestButton onClick={props.onStartNewTestClick} />
     </div>
   );
 }
@@ -27,13 +27,14 @@ function CompareTestsButton() {
   );
 }
 
-function StartNewTestButton() {
+function StartNewTestButton(props) {
   return (
     <RaisedButton
       style={{
         margin: "6px 6px 12px 12px"
       }}
       primary
+      onTouchTap={props.onClick}
       label="Start New Test"
       labelPosition="before"
       labelColor="white"
