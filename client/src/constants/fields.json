@@ -5,7 +5,8 @@
   },
   {
     "columnName": "test_id",
-    "displayName": "Test Id"
+    "displayName": "Test Id",
+    "tableColumnWidth": 170
   },
   {
     "columnName": "status",
@@ -42,50 +43,60 @@
   {
     "columnName": "fv_ttfb",
     "displayName": "TTFB (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 100
   },
   {
     "columnName": "fv_first_paint",
     "displayName": "First Paint (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 130
   },
   {
     "columnName": "fv_start_render",
     "displayName": "Start Render (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 135
   },
   {
     "columnName": "fv_last_visual_change",
     "displayName": "Last Visual Change (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 170
   },
   {
     "columnName": "fv_visual_complete",
     "displayName": "Visual Complete (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 160
   },
   {
     "columnName": "fv_load_time",
     "displayName": "Load Time (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 130
   },
   {
     "columnName": "fv_fully_loaded",
     "displayName": "Fully Loaded (First View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 140
   },
   {
     "columnName": "fv_speed_index",
-    "displayName": "Speed Index (First View)"
+    "displayName": "Speed Index (First View)",
+    "tableColumnWidth": 140
   },
   {
     "columnName": "fv_requests_made",
-    "displayName": "Requests Made (First View)"
+    "displayName": "Requests Made (First View)",
+    "tableColumnWidth": 160
   },
   {
     "columnName": "fv_bytes_downloaded",
     "displayName": "Bytes Downloaded (First View)",
-    "valueType": "bytes"
+    "valueType": "bytes",
+    "tableColumnWidth": 170
   },
   {
     "columnName": "fv_domain_breakdown",
@@ -98,50 +109,60 @@
   {
     "columnName": "rv_ttfb",
     "displayName": "TTFB (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 110
   },
   {
     "columnName": "rv_first_paint",
     "displayName": "First Paint (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 140
   },
   {
     "columnName": "rv_start_render",
     "displayName": "Start Render (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 150
   },
   {
     "columnName": "rv_last_visual_change",
     "displayName": "Last Visual Change (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 180
   },
   {
     "columnName": "rv_visual_complete",
     "displayName": "Visual Complete (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 170
   },
   {
     "columnName": "rv_load_time",
     "displayName": "Load Time (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 140
   },
   {
     "columnName": "rv_fully_loaded",
     "displayName": "Fully Loaded (Repeat View)",
-    "valueType": "time"
+    "valueType": "time",
+    "tableColumnWidth": 150
   },
   {
     "columnName": "rv_speed_index",
-    "displayName": "Speed Index (Repeat View)"
+    "displayName": "Speed Index (Repeat View)",
+    "tableColumnWidth": 150
   },
   {
     "columnName": "rv_requests_made",
-    "displayName": "Requests Made (Repeat View)"
+    "displayName": "Requests Made (Repeat View)",
+    "tableColumnWidth": 170
   },
   {
     "columnName": "rv_bytes_downloaded",
     "displayName": "Bytes Downloaded (Repeat View)",
-    "valueType": "bytes"
+    "valueType": "bytes",
+    "tableColumnWidth": 180
   },
   {
     "columnName": "rv_domain_breakdown",

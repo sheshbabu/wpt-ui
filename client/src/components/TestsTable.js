@@ -29,7 +29,7 @@ export default function TestsTable(props) {
 function getColumnHeaders(fields) {
   return fields.map((field, index) => {
     return (
-      <TableHeaderColumn key={index} style={{ width: 170 }}>
+      <TableHeaderColumn key={index} style={{ width: field.tableColumnWidth }}>
         {field.displayName}
       </TableHeaderColumn>
     );
@@ -48,7 +48,7 @@ function getRows(tests, fields) {
         value = formatBytes(value);
       }
       return (
-        <TableRowColumn key={index} style={{ width: 170 }}>
+        <TableRowColumn key={index} style={{ width: field.tableColumnWidth }}>
           {value}
         </TableRowColumn>
       );
