@@ -52,15 +52,15 @@ export default class TestsListPage extends React.PureComponent {
     this.fetchTests();
   }
 
-  handleMetric1Change(event, key) {
+  handleMetric1Change(event, index, value) {
     const fields = getDisplayableFields();
-    const columnName = fields[key].columnName;
+    const columnName = fields[value].columnName;
     this.setState({ metric1: columnName });
   }
 
-  handleMetric2Change(event, key) {
+  handleMetric2Change(event, index, value) {
     const fields = getDisplayableFields();
-    const columnName = fields[key].columnName;
+    const columnName = fields[value].columnName;
     this.setState({ metric2: columnName });
   }
 
