@@ -84,9 +84,8 @@ function DateField(props) {
       hintText="Select"
       container="inline"
       mode="landscape"
-      style={{ width: 170 }}
       inputStyle={{ marginTop: 12, cursor: "pointer" }}
-      textFieldStyle={{ marginTop: -1 }}
+      textFieldStyle={{ width: 170, marginTop: -1 }}
       underlineShow={false}
       onChange={props.onChange}
       autoOk
