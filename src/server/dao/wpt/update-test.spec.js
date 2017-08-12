@@ -12,9 +12,9 @@ describe("WptDao - updateTest", () => {
   const jsonUrl = "www.xyz.com";
 
   beforeEach(async () => {
-    await knex.migrate.rollback();
-    await db.migrate();
-    return knex("wpt_reports").insert({
+    await db.rollbackMigration();
+    await db.runMigration();
+    await knex("wpt_reports").insert({
       test_id: testId,
       status: "pending",
       json_url: jsonUrl
@@ -22,7 +22,7 @@ describe("WptDao - updateTest", () => {
   });
 
   afterEach(async () => {
-    return knex.migrate.rollback();
+    await db.rollbackMigration();
   });
 
   it("should update a row with provided values", async () => {

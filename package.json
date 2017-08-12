@@ -6,29 +6,20 @@
   "scripts": {
     "start": "concurrently 'npm run start:server' 'npm run start:client'",
     "start:server": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
-    "start:client": "cd client && NODE_ENV=development npm run start",
+    "start:client": "react-scripts start",
+    "build": "react-scripts build",
     "test": "NODE_ENV=test mocha --recursive './!(node_modules|client)/**/*.spec.js'",
     "test:cov": "nyc npm test",
     "lint": "eslint .",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
   "nyc": {
-    "reporter": [
-      "lcov",
-      "text",
-      "html"
-    ]
+    "reporter": ["lcov", "text", "html"]
   },
-  "keywords": [
-    "webpagetest"
-  ],
+  "keywords": ["webpagetest"],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {
@@ -40,7 +31,7 @@
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.13.4",
     "lint-staged": "^3.6.1",
@@ -49,6 +40,7 @@
     "nyc": "^11.0.3",
     "prettier": "^1.5.3",
     "proxyquire": "^1.8.0",
+    "react-scripts": "^1.0.11",
     "sinon": "^2.3.8"
   },
   "dependencies": {
@@ -59,6 +51,14 @@
     "knex": "^0.13.0",
     "pg": "^7.0.2",
     "query-string": "^5.0.0",
-    "react-autobind": "^1.0.6"
-  }
+    "react-autobind": "^1.0.6",
+    "chart.js": "^2.6.0",
+    "material-ui": "^0.18.7",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-chartjs-2": "^2.5.6",
+    "react-dom": "^15.6.1",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "proxy": "http://localhost:3000"
 }

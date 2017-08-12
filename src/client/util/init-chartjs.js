@@ -1,7 +1,7 @@
 import { Chart } from "react-chartjs-2";
 import { blue600 } from "material-ui/styles/colors";
 
-export default function initChartJs() {
+export function initChartJs() {
   Chart.defaults.global.defaultFontColor = "white";
   Chart.defaults.global.defaultFontFamily = "Roboto";
   Chart.defaults.global.tooltips.cornerRadius = 0;

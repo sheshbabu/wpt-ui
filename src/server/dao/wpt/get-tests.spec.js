@@ -10,13 +10,13 @@ describe("WptDao - getTests", () => {
   const knex = db.getKnex();
 
   beforeEach(async () => {
-    await knex.migrate.rollback();
-    await db.migrate();
+    await db.rollbackMigration();
+    await db.runMigration();
     await db.seed();
   });
 
   afterEach(async () => {
-    return knex.migrate.rollback();
+    await db.rollbackMigration();
   });
 
   it("should return all the 5 rows that were seeded", async () => {
