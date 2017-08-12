@@ -8,7 +8,7 @@ import TableToolbar from "../components/TableToolbar";
 import TestsTable from "../components/TestsTable";
 import FIELDS from "../constants/fields.json";
 
-export default class TestsListPage extends React.PureComponent {
+export default class HomePage extends React.PureComponent {
   constructor() {
     super();
     autobind(this);
@@ -44,6 +44,10 @@ export default class TestsListPage extends React.PureComponent {
     this.setState({ tests });
   }
 
+  async startTest() {
+    await fetch("/api/tests", { method: "POST" });
+  }
+
   handleStartDateChange(event, date) {
     this.setState({ startDate: moment(date).format("YYYY-MM-DD") });
     this.fetchTests();
@@ -68,6 +72,10 @@ export default class TestsListPage extends React.PureComponent {
 
   handleRowSelection(selectedTests) {
     this.setState({ selectedTests });
+  }
+
+  handleStartNewTestClick() {
+    this.startTest();
   }
 
   render() {
@@ -97,7 +105,10 @@ export default class TestsListPage extends React.PureComponent {
           labels={getChartLabels(this.state)}
           datasets={getChartDatasets(this.state)}
         />
-        <TableToolbar selectedTests={this.state.selectedTests} />
+        <TableToolbar
+          selectedTests={this.state.selectedTests}
+          onStartNewTestClick={this.handleStartNewTestClick}
+        />
         <TestsTable
           tests={this.state.tests}
           fields={getTableFields()}
