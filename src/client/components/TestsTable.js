@@ -10,6 +10,7 @@ import {
   TableRowColumn
 } from "material-ui/Table";
 import { deepPurple600 } from "material-ui/styles/colors";
+import TableCellSubText from "./TableCellSubText";
 
 export default function TestsTable(props) {
   return (
@@ -36,11 +37,7 @@ function getColumnHeaders(fields) {
   return fields.map((field, index) => {
     let runType = null;
     if (field.runType) {
-      runType = (
-        <div style={{ fontSize: 10, marginTop: 5 }}>
-          {field.runType}
-        </div>
-      );
+      runType = <TableCellSubText text={field.runType} />;
     }
     return (
       <TableHeaderColumn key={index} style={{ width: field.tableColumnWidth }}>
@@ -77,11 +74,7 @@ function getRows(tests, fields, selectedTests) {
       }
 
       if (field.columnName === "test_id" && test.status === "pending") {
-        subText = (
-          <div style={{ fontSize: 10, marginTop: 5, color: "#9e9e9e" }}>
-            In Progress
-          </div>
-        );
+        subText = <TableCellSubText text="In Progress" />;
       }
 
       return (
