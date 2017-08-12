@@ -1,7 +1,9 @@
 [
   {
     "columnName": "created_at",
-    "displayName": "Created At"
+    "displayName": "Created At",
+    "tableColumnWidth": 80,
+    "valueType": "date"
   },
   {
     "columnName": "test_id",
@@ -10,7 +12,8 @@
   },
   {
     "columnName": "status",
-    "displayName": "Status"
+    "displayName": "Status",
+    "tableColumnWidth": 80
   },
   {
     "columnName": "url",
@@ -19,10 +22,6 @@
   {
     "columnName": "json_url",
     "displayName": "Json Url"
-  },
-  {
-    "columnName": "summary_url",
-    "displayName": "Summary Url"
   },
   {
     "columnName": "location",
@@ -195,5 +194,11 @@
     "columnName": "rv_content_breakdown",
     "displayName": "Content Breakdown",
     "runType": "Repeat View"
+  },
+  {
+    "columnName": "summary_url",
+    "displayName": "Summary Url",
+    "tableColumnWidth": 400,
+    "valueType": "url"
   }
 ]

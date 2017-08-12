@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import Paper from "material-ui/Paper";
 import {
   Table,
@@ -8,6 +9,7 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
+import { blue600 } from "material-ui/styles/colors";
 
 export default function TestsTable(props) {
   return (
@@ -28,14 +30,20 @@ export default function TestsTable(props) {
 
 function getColumnHeaders(fields) {
   return fields.map((field, index) => {
+    let runType = null;
+    if (field.runType) {
+      runType = (
+        <div style={{ fontSize: 10, marginTop: 5 }}>
+          {field.runType}
+        </div>
+      );
+    }
     return (
       <TableHeaderColumn key={index} style={{ width: field.tableColumnWidth }}>
         <div style={{ color: "#666" }}>
           {field.displayName}
         </div>
-        <div style={{ fontSize: 10, marginTop: 5 }}>
-          {field.runType}
-        </div>
+        {runType}
       </TableHeaderColumn>
     );
   });
@@ -45,12 +53,19 @@ function getRows(tests, fields) {
   return tests.map((test, rowIndex) => {
     const columns = fields.map((field, index) => {
       let value = test[field.columnName];
-      value = parseInt(value, 10);
       const valueType = field.valueType || "";
       if (valueType === "time") {
         value = formatTime(value);
+      } else if (valueType === "date") {
+        value = moment(value).format("YYYY MMM DD");
       } else if (valueType === "bytes") {
         value = formatBytes(value);
+      } else if (valueType === "url") {
+        value = (
+          <a href={value} style={{ color: blue600 }} target="_blank">
+            {value}
+          </a>
+        );
       }
       return (
         <TableRowColumn key={index} style={{ width: field.tableColumnWidth }}>
@@ -70,10 +85,12 @@ function getRows(tests, fields) {
 }
 
 function formatTime(value) {
+  value = parseInt(value, 10);
   return (value = value >= 1000 ? value / 1000 + "s" : value + "ms");
 }
 
 function formatBytes(value) {
+  value = parseInt(value, 10);
   if (value >= 1024 * 1024) {
     return (value / (1024 * 1024)).toFixed(2) + "MB";
   } else if (value >= 1024) {

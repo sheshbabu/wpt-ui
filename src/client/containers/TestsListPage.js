@@ -53,13 +53,13 @@ export default class TestsListPage extends React.PureComponent {
   }
 
   handleMetric1Change(event, index, value) {
-    const fields = getDisplayableFields();
+    const fields = getComparableFields();
     const columnName = fields[value].columnName;
     this.setState({ metric1: columnName });
   }
 
   handleMetric2Change(event, index, value) {
-    const fields = getDisplayableFields();
+    const fields = getComparableFields();
     const columnName = fields[value].columnName;
     this.setState({ metric2: columnName });
   }
@@ -83,7 +83,7 @@ export default class TestsListPage extends React.PureComponent {
           onEndDateChange={this.handleEndDateChange}
           onMetric1Change={this.handleMetric1Change}
           onMetric2Change={this.handleMetric2Change}
-          fields={getDisplayableFields()}
+          fields={getComparableFields()}
         />
         <BarChart
           width={900}
@@ -91,7 +91,7 @@ export default class TestsListPage extends React.PureComponent {
           labels={getChartLabels(this.state.tests)}
           datasets={getChartDatasets(this.state)}
         />
-        <TestsTable tests={this.state.tests} fields={getDisplayableFields()} />
+        <TestsTable tests={this.state.tests} fields={getTableFields()} />
       </div>
     );
   }
@@ -102,7 +102,7 @@ function getChartLabels(tests) {
 }
 
 function getChartDatasets(state) {
-  const fields = getDisplayableFields();
+  const fields = getComparableFields();
   const label1 = fields.find(field => field.columnName === state.metric1);
   const label2 = fields.find(field => field.columnName === state.metric2);
   return [
@@ -117,7 +117,7 @@ function getChartDatasets(state) {
   ];
 }
 
-function getDisplayableFields() {
+function getComparableFields() {
   return FIELDS.filter(field => {
     const omittedFields = [
       "created_at",
@@ -126,6 +126,24 @@ function getDisplayableFields() {
       "url",
       "json_url",
       "summary_url",
+      "location",
+      "connectivity",
+      "browser_name",
+      "browser_version",
+      "fv_domain_breakdown",
+      "fv_content_breakdown",
+      "rv_domain_breakdown",
+      "rv_content_breakdown"
+    ];
+    return !omittedFields.includes(field.columnName);
+  });
+}
+
+function getTableFields() {
+  return FIELDS.filter(field => {
+    const omittedFields = [
+      "url",
+      "json_url",
       "location",
       "connectivity",
       "browser_name",
