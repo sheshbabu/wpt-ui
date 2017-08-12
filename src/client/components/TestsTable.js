@@ -13,15 +13,19 @@ import { deepPurple600 } from "material-ui/styles/colors";
 
 export default function TestsTable(props) {
   return (
-    <Paper style={{ width: 900, marginTop: 20, marginBottom: 20 }} zDepth={1}>
-      <Table bodyStyle={{ overflow: "visible" }} multiSelectable>
+    <Paper style={{ width: 900, marginBottom: 20 }} zDepth={1}>
+      <Table
+        bodyStyle={{ overflow: "visible" }}
+        multiSelectable
+        onRowSelection={selectedRows => handleRowSelection(selectedRows, props)}
+      >
         <TableHeader displaySelectAll={false}>
           <TableRow>
             {getColumnHeaders(props.fields)}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {getRows(props.tests, props.fields)}
+          {getRows(props.tests, props.fields, props.selectedTests)}
         </TableBody>
       </Table>
     </Paper>
@@ -49,8 +53,10 @@ function getColumnHeaders(fields) {
   });
 }
 
-function getRows(tests, fields) {
+function getRows(tests, fields, selectedTests) {
   return tests.map((test, rowIndex) => {
+    const isRowSelected = selectedTests.includes(test.test_id);
+
     const columns = fields.map((field, index) => {
       let value = test[field.columnName];
       let subText = null;
@@ -85,10 +91,12 @@ function getRows(tests, fields) {
         </TableRowColumn>
       );
     });
+
     return (
       <TableRow
         key={test.test_id}
         style={{ background: rowIndex % 2 ? "#fafafa" : "white" }}
+        selected={isRowSelected}
       >
         {columns}
       </TableRow>
@@ -110,4 +118,9 @@ function formatBytes(value) {
   } else {
     return value + "B";
   }
+}
+
+function handleRowSelection(selectedRows, props) {
+  const testIds = selectedRows.map(index => props.tests[index].test_id);
+  props.onRowSelection(testIds);
 }

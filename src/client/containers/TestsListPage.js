@@ -4,6 +4,7 @@ import moment from "moment";
 import queryString from "query-string";
 import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
+import TableToolbar from "../components/TableToolbar";
 import TestsTable from "../components/TestsTable";
 import FIELDS from "../constants/fields.json";
 
@@ -16,7 +17,8 @@ export default class TestsListPage extends React.PureComponent {
       startDate: "",
       endDate: "",
       metric1: "fv_start_render",
-      metric2: "fv_load_time"
+      metric2: "fv_load_time",
+      selectedTests: []
     };
   }
 
@@ -64,6 +66,10 @@ export default class TestsListPage extends React.PureComponent {
     this.setState({ metric2: columnName });
   }
 
+  handleRowSelection(selectedTests) {
+    this.setState({ selectedTests });
+  }
+
   render() {
     return (
       <div
@@ -91,7 +97,13 @@ export default class TestsListPage extends React.PureComponent {
           labels={getChartLabels(this.state)}
           datasets={getChartDatasets(this.state)}
         />
-        <TestsTable tests={this.state.tests} fields={getTableFields()} />
+        <TableToolbar selectedTests={this.state.selectedTests} />
+        <TestsTable
+          tests={this.state.tests}
+          fields={getTableFields()}
+          selectedTests={this.state.selectedTests}
+          onRowSelection={this.handleRowSelection}
+        />
       </div>
     );
   }
