@@ -7,6 +7,7 @@ export default function getTheme() {
       selectColor: deepPurple600
     },
     palette: {
+      textColor: "#666",
       primary1Color: deepPurple600,
       accent1Color: deepPurple600,
       pickerHeaderColor: deepPurple600
