@@ -62,7 +62,12 @@ function getRows(tests, fields, selectedTests) {
       if (valueType === "time") {
         value = formatTime(value);
       } else if (valueType === "date") {
-        value = moment(value).format("YYYY MMM DD");
+        value = (
+          <div>
+            {moment(value).format("YYYY MMM DD")}
+            <TableCellSubText text={moment(value).format("h:mm:ss a")} />
+          </div>
+        );
       } else if (valueType === "bytes") {
         value = formatBytes(value);
       } else if (valueType === "url") {
