@@ -21,8 +21,8 @@ describe("WptDao - getMultipleTests", () => {
     const testIds = ["170608_AA_CMPL", "170709_CC_CMPL"];
     const rows = await getMultipleTests(testIds);
     assert.strictEqual(rows.length, 2);
-    assert.strictEqual(rows[0].test_id, "170608_AA_CMPL");
-    assert.strictEqual(rows[1].test_id, "170709_CC_CMPL");
+    assert.strictEqual(rows[0].test_id, "170709_CC_CMPL");
+    assert.strictEqual(rows[1].test_id, "170608_AA_CMPL");
   });
 
   it("should throw a NoTestsFoundError if no tests exist within the date range", async () => {
