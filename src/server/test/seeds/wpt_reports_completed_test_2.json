@@ -1,10 +1,10 @@
 {
   "created_at": "2017-08-07 12:00:00.801277+08",
-  "test_id": "awesome_test_id_2",
+  "test_id": "170708_BB_CMPL",
   "status": "completed",
   "url": "my.awesome.site",
-  "json_url": "http://www.webpagetest.org/results.php?json=awesome_test_id_2",
-  "summary_url": "http://www.webpagetest.org/results.php?test=awesome_test_id_2",
+  "json_url": "http://www.webpagetest.org/results.php?json=170708_BB_CMPL",
+  "summary_url": "http://www.webpagetest.org/results.php?test=170708_BB_CMPL",
   "location": "ec2-ap-southeast-1:Chrome",
   "connectivity": "Cable",
   "browser_name": "Google Chrome",

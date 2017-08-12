@@ -22,9 +22,9 @@ describe("WptDao - getTestsWithinDateRange", () => {
     const endDate = "2017-10-31";
     const rows = await getTestsWithinDateRange(startDate, endDate);
     assert.strictEqual(rows.length, 3);
-    assert.strictEqual(rows[0].test_id, "awesome_test_id_3");
-    assert.strictEqual(rows[1].test_id, "awesome_test_id_4");
-    assert.strictEqual(rows[2].test_id, "awesome_test_id_5");
+    assert.strictEqual(rows[0].test_id, "170709_CC_CMPL");
+    assert.strictEqual(rows[1].test_id, "172009_DD_CMPL");
+    assert.strictEqual(rows[2].test_id, "173010_EE_CMPL");
   });
 
   it("should throw a NoTestsFoundError if no tests exist within the date range", async () => {

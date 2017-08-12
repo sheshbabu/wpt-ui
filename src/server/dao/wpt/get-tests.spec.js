@@ -21,7 +21,7 @@ describe("WptDao - getTests", () => {
 
   it("should return all the 5 rows that were seeded", async () => {
     const rows = await getTests();
-    assert.strictEqual(rows.length, 5);
+    assert.strictEqual(rows.length, 6);
   });
 
   it("should throw a NoTestsFoundError if table is empty", async () => {

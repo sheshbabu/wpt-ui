@@ -18,14 +18,14 @@ describe("WptDao - getTest", () => {
   });
 
   it("should return the matching row if it exists", async () => {
-    const testId = "awesome_test_id_2";
+    const testId = "170708_BB_CMPL";
     const row = await getTest(testId);
     assert.strictEqual(row.test_id, testId);
   });
 
   it("should throw a NoTestFoundError if it doesn't exist", async () => {
     try {
-      const testId = "awesome_test_id_1000";
+      const testId = "170608_AA_CMPL_XXX_1000";
       await getTest(testId);
     } catch (error) {
       assert(error instanceof NoTestFoundError);
