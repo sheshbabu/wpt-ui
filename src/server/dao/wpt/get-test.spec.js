@@ -7,16 +7,14 @@ const NoTestFoundError = require("../../errors/NoTestFoundError");
 initDb();
 
 describe("WptDao - getTest", () => {
-  const knex = db.getKnex();
-
   beforeEach(async () => {
-    await knex.migrate.rollback();
-    await db.migrate();
+    await db.rollbackMigration();
+    await db.runMigration();
     await db.seed();
   });
 
   afterEach(async () => {
-    return knex.migrate.rollback();
+    await db.rollbackMigration();
   });
 
   it("should return the matching row if it exists", async () => {

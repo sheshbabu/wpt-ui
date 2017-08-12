@@ -11,12 +11,12 @@ describe("WptDao - createTest", () => {
   const jsonUrl = "www.xyz.com";
 
   beforeEach(async () => {
-    await knex.migrate.rollback();
-    return db.migrate();
+    await db.rollbackMigration();
+    await db.runMigration();
   });
 
   afterEach(async () => {
-    return knex.migrate.rollback();
+    await db.rollbackMigration();
   });
 
   it("should create a row with 'test_id' field set to what was passed as argument", async () => {

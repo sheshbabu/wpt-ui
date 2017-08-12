@@ -7,16 +7,14 @@ const NoTestsFoundError = require("../../errors/NoTestsFoundError");
 initDb();
 
 describe("WptDao - getMultipleTests", () => {
-  const knex = db.getKnex();
-
   beforeEach(async () => {
-    await knex.migrate.rollback();
-    await db.migrate();
+    await db.rollbackMigration();
+    await db.runMigration();
     await db.seed();
   });
 
   afterEach(async () => {
-    return knex.migrate.rollback();
+    await db.rollbackMigration();
   });
 
   it("should return the rows that have the provided testIds", async () => {

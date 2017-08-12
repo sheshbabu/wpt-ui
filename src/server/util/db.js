@@ -1,5 +1,7 @@
 const path = require("path");
 
+const migrationDirPath = path.resolve(__dirname, "../migrations");
+const seedDirPath = path.resolve(__dirname, "../seeds");
 let knex = null;
 
 function init(config) {
@@ -11,9 +13,12 @@ function getKnex() {
   return knex;
 }
 
-function migrate() {
-  const migrationDirPath = path.join(__dirname, "../migrations");
+function runMigration() {
   return knex.migrate.latest({ directory: migrationDirPath });
+}
+
+function rollbackMigration() {
+  return knex.migrate.rollback({ directory: migrationDirPath });
 }
 
 function seed() {
@@ -21,7 +26,7 @@ function seed() {
     process.env.NODE_ENV === "development" ||
     process.env.NODE_ENV === "test"
   ) {
-    return knex.seed.run();
+    return knex.seed.run({ directory: seedDirPath });
   }
   return Promise.resolve();
 }
@@ -48,7 +53,8 @@ function getKnexConfig(config) {
 
 module.exports = {
   init,
-  migrate,
+  runMigration,
+  rollbackMigration,
   seed,
   getKnex
 };
