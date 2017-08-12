@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const compression = require("compression");
 const db = require("./util/db");
 const logger = require("./util/logger");
 const apiRouter = require("./routes/api");
@@ -8,6 +9,7 @@ const wptHooksRouter = require("./routes/wpt-hooks");
 
 const app = express();
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "../../build")));
 
