@@ -88,7 +88,7 @@ export default class TestsListPage extends React.PureComponent {
         <BarChart
           width={900}
           height={300}
-          labels={getChartLabels(this.state.tests)}
+          labels={getChartLabels(this.state)}
           datasets={getChartDatasets(this.state)}
         />
         <TestsTable tests={this.state.tests} fields={getTableFields()} />
@@ -97,24 +97,41 @@ export default class TestsListPage extends React.PureComponent {
   }
 }
 
-function getChartLabels(tests) {
+function getChartLabels(state) {
+  const tests = sortAndFilterTestsForChart(state.tests);
   return tests.map(test => moment(test.created_at).format("YYYY MMM DD"));
 }
 
 function getChartDatasets(state) {
+  const tests = sortAndFilterTestsForChart(state.tests);
   const fields = getComparableFields();
   const label1 = fields.find(field => field.columnName === state.metric1);
   const label2 = fields.find(field => field.columnName === state.metric2);
   return [
     {
       label: label1.displayName,
-      data: state.tests.map(test => test[state.metric1])
+      data: tests.map(test => test[state.metric1])
     },
     {
       label: label2.displayName,
-      data: state.tests.map(test => test[state.metric2])
+      data: tests.map(test => test[state.metric2])
     }
   ];
+}
+
+function sortAndFilterTestsForChart(tests) {
+  const testsClone = tests.slice(0).filter(test => test.status !== "pending");
+  return testsClone.sort((test1, test2) => {
+    if (test1.created_at === test2.created_at) {
+      return 0;
+    }
+
+    if (moment(test1.created_at).isBefore(test2.created_at)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 }
 
 function getComparableFields() {
