@@ -8,12 +8,11 @@
   {
     "columnName": "test_id",
     "displayName": "Test Id",
-    "tableColumnWidth": 80
+    "tableColumnWidth": 120
   },
   {
     "columnName": "status",
-    "displayName": "Status",
-    "tableColumnWidth": 80
+    "displayName": "Status"
   },
   {
     "columnName": "url",

@@ -142,6 +142,7 @@ function getComparableFields() {
 function getTableFields() {
   return FIELDS.filter(field => {
     const omittedFields = [
+      "status",
       "url",
       "json_url",
       "location",

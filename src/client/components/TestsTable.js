@@ -53,7 +53,9 @@ function getRows(tests, fields) {
   return tests.map((test, rowIndex) => {
     const columns = fields.map((field, index) => {
       let value = test[field.columnName];
+      let subText = null;
       const valueType = field.valueType || "";
+
       if (valueType === "time") {
         value = formatTime(value);
       } else if (valueType === "date") {
@@ -67,9 +69,19 @@ function getRows(tests, fields) {
           </a>
         );
       }
+
+      if (field.columnName === "test_id" && test.status === "pending") {
+        subText = (
+          <div style={{ fontSize: 10, marginTop: 5, color: "#9e9e9e" }}>
+            In Progress
+          </div>
+        );
+      }
+
       return (
         <TableRowColumn key={index} style={{ width: field.tableColumnWidth }}>
           {value}
+          {subText}
         </TableRowColumn>
       );
     });
