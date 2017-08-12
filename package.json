@@ -15,12 +15,22 @@
     "postinstall": "npm run build"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "nyc": {
-    "reporter": ["lcov", "text", "html"]
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
   },
-  "keywords": ["webpagetest"],
+  "keywords": [
+    "webpagetest"
+  ],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {
@@ -59,6 +69,7 @@
     "react-autobind": "^1.0.6",
     "react-chartjs-2": "^2.5.6",
     "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
     "react-scripts": "^1.0.11",
     "react-tap-event-plugin": "^2.0.1"
   },
