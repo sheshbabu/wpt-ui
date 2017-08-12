@@ -1,13 +1,10 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
 const db = require("./util/db");
 const logger = require("./util/logger");
 const apiRouter = require("./routes/api");
 const wptHooksRouter = require("./routes/wpt-hooks");
-
-dotenv.load();
 
 const app = express();
 
