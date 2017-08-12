@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "material-ui/AppBar";
-import { blue600 } from "material-ui/styles/colors";
+import { deepPurple600 } from "material-ui/styles/colors";
 import NavBarRightButtons from "../components/NavBarRightButtons";
 
 export default function NavBar() {
@@ -10,7 +10,7 @@ export default function NavBar() {
   return (
     <AppBar
       title="WebPageTest UI"
-      titleStyle={{ color: blue600 }}
+      titleStyle={{ color: deepPurple600 }}
       iconElementRight={
         <NavBarRightButtons onStartNewTestClick={handleStartNewTestClick} />
       }

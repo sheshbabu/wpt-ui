@@ -1,7 +1,12 @@
 import React from "react";
 import Paper from "material-ui/Paper";
 import { Bar } from "react-chartjs-2";
-import { blue400, blue600, blue700, blue800 } from "material-ui/styles/colors";
+import {
+  deepPurple400,
+  deepPurple600,
+  deepPurple800,
+  deepPurple900
+} from "material-ui/styles/colors";
 
 export default function BarChart(props) {
   const chartData = {
@@ -32,7 +37,7 @@ export default function BarChart(props) {
   const paperStyles = {
     width: props.width,
     height: props.height,
-    backgroundColor: blue600,
+    backgroundColor: deepPurple600,
     padding: 10
   };
   return (
@@ -40,7 +45,7 @@ export default function BarChart(props) {
       <Bar
         width={props.width}
         height={props.height}
-        style={{ backgroundColor: blue600 }}
+        style={{ backgroundColor: deepPurple600 }}
         data={chartData}
         options={chartOptions}
       />
@@ -51,13 +56,13 @@ export default function BarChart(props) {
 function getChartDatasets(datasets) {
   let datasetConfig1 = {
     yAxisID: "y-axis-0",
-    backgroundColor: blue700,
-    hoverBackgroundColor: blue400
+    backgroundColor: deepPurple900,
+    hoverBackgroundColor: deepPurple400
   };
   let datasetConfig2 = {
     yAxisID: "y-axis-1",
-    backgroundColor: blue800,
-    hoverBackgroundColor: blue400
+    backgroundColor: deepPurple800,
+    hoverBackgroundColor: deepPurple400
   };
 
   datasetConfig1 = Object.assign({}, datasetConfig1, datasets[0]);

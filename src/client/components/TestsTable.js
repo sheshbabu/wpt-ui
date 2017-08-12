@@ -9,7 +9,7 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
-import { blue600 } from "material-ui/styles/colors";
+import { deepPurple600 } from "material-ui/styles/colors";
 
 export default function TestsTable(props) {
   return (
@@ -64,7 +64,7 @@ function getRows(tests, fields) {
         value = formatBytes(value);
       } else if (valueType === "url") {
         value = (
-          <a href={value} style={{ color: blue600 }} target="_blank">
+          <a href={value} style={{ color: deepPurple600 }} target="_blank">
             {value}
           </a>
         );

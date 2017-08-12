@@ -1,18 +1,18 @@
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { blue600 } from "material-ui/styles/colors";
+import { deepPurple600 } from "material-ui/styles/colors";
 
 export default function getTheme() {
   return getMuiTheme({
     datePicker: {
-      selectColor: blue600
+      selectColor: deepPurple600
     },
     palette: {
-      primary1Color: blue600,
-      accent1Color: blue600,
-      pickerHeaderColor: blue600
+      primary1Color: deepPurple600,
+      accent1Color: deepPurple600,
+      pickerHeaderColor: deepPurple600
     },
     flatButton: {
-      primaryTextColor: blue600
+      primaryTextColor: deepPurple600
     }
   });
 }
