@@ -4,7 +4,7 @@
   "description": "UI for WebPagetest",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run start:server' 'npm run start:client'",
+    "start": "concurrently --raw 'npm run start:server' 'npm run start:client'",
     "start:server": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
     "start:client": "react-scripts start",
     "build": "react-scripts build",
@@ -15,22 +15,12 @@
     "postinstall": "npm run build"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
   "nyc": {
-    "reporter": [
-      "lcov",
-      "text",
-      "html"
-    ]
+    "reporter": ["lcov", "text", "html"]
   },
-  "keywords": [
-    "webpagetest"
-  ],
+  "keywords": ["webpagetest"],
   "author": "Sheshbabu Chinnakonda",
   "license": "MIT",
   "devDependencies": {
