@@ -78,6 +78,14 @@ export default class HomePage extends React.PureComponent {
     this.startTest();
   }
 
+  handleCompareTestClick() {
+    const testId1 = this.state.selectedTests[0];
+    const testId2 = this.state.selectedTests[1];
+    this.props.history.push(
+      `/compare?test_id_1=${testId1}&test_id_2=${testId2}`
+    );
+  }
+
   render() {
     return (
       <div
@@ -108,6 +116,7 @@ export default class HomePage extends React.PureComponent {
         <TableToolbar
           selectedTests={this.state.selectedTests}
           onStartNewTestClick={this.handleStartNewTestClick}
+          onCompareTestClick={this.handleCompareTestClick}
         />
         <TestsTable
           tests={this.state.tests}

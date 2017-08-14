@@ -49,6 +49,7 @@ function CompareTestsButton(props) {
       primary
       style={{ marginRight: -10 }}
       disabled={isDisabled}
+      onTouchTap={props.onCompareTestClick}
       label="Compare Tests"
       labelPosition="after"
       icon={<CompareArrows />}
