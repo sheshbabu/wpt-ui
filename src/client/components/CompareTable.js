@@ -15,7 +15,7 @@ import TableCellSubText from "./TableCellSubText";
 export default function CompareTable(props) {
   return (
     <Paper style={{ width: 900, marginBottom: 20 }} zDepth={1}>
-      <Table bodyStyle={{ overflow: "visible" }}>
+      <Table bodyStyle={{ overflow: "visible" }} selectable={false}>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           {getColumnHeaders(props)}
         </TableHeader>
