@@ -167,25 +167,23 @@ function sortAndFilterTestsForChart(tests) {
 }
 
 function getComparableFields() {
-  return FIELDS.filter(field => {
-    const omittedFields = [
-      "created_at",
-      "test_id",
-      "status",
-      "url",
-      "json_url",
-      "summary_url",
-      "location",
-      "connectivity",
-      "browser_name",
-      "browser_version",
-      "fv_domain_breakdown",
-      "fv_content_breakdown",
-      "rv_domain_breakdown",
-      "rv_content_breakdown"
-    ];
-    return !omittedFields.includes(field.columnName);
-  });
+  const omittedFields = [
+    "created_at",
+    "test_id",
+    "status",
+    "url",
+    "json_url",
+    "summary_url",
+    "location",
+    "connectivity",
+    "browser_name",
+    "browser_version",
+    "fv_domain_breakdown",
+    "fv_content_breakdown",
+    "rv_domain_breakdown",
+    "rv_content_breakdown"
+  ];
+  return FIELDS.filter(field => !omittedFields.includes(field.columnName));
 }
 
 function getTableFields() {

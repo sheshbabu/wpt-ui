@@ -1,6 +1,8 @@
 import React from "react";
 import moment from "moment";
 import queryString from "query-string";
+import CompareTable from "../components/CompareTable";
+import FIELDS from "../constants/fields.json";
 
 export default class ComparePage extends React.Component {
   constructor() {
@@ -46,14 +48,40 @@ export default class ComparePage extends React.Component {
     }
 
     return (
-      <div>
-        <div>
-          {oldTest.created_at}
-        </div>
-        <div>
-          {newTest.created_at}
-        </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: 20
+        }}
+      >
+        <CompareTable
+          oldTest={oldTest}
+          newTest={newTest}
+          fields={getComparableFields()}
+        />
       </div>
     );
   }
+}
+
+function getComparableFields() {
+  const omittedFields = [
+    "created_at",
+    "test_id",
+    "status",
+    "url",
+    "json_url",
+    "summary_url",
+    "location",
+    "connectivity",
+    "browser_name",
+    "browser_version",
+    "fv_domain_breakdown",
+    "fv_content_breakdown",
+    "rv_domain_breakdown",
+    "rv_content_breakdown"
+  ];
+  return FIELDS.filter(field => !omittedFields.includes(field.columnName));
 }
