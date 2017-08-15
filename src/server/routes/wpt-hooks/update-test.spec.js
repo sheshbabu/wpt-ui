@@ -7,7 +7,7 @@ const config = {
   wptUrl: "www.test.com",
   wptApiKey: "xyz",
   wptLocation: "ec2-ap-southeast-1:Chrome.Cable",
-  wptPingbackUrl: "www.pingback.com",
+  publicUrl: "http://www.pingback.com",
   wptRuns: 5
 };
 

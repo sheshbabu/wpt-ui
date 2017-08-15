@@ -1,3 +1,4 @@
+const { URL } = require("url");
 const axios = require("axios");
 const logger = require("../../util/logger");
 const wptDao = require("../../dao/wpt");
@@ -19,11 +20,12 @@ async function runTest(config) {
 }
 
 function getWptParams(config) {
+  const pingbackUrl = new URL("/hooks/update", config.publicUrl);
   return {
     url: config.wptUrl,
     k: config.wptApiKey,
     location: config.wptLocation,
-    pingback: config.wptPingbackUrl,
+    pingback: pingbackUrl.href,
     runs: config.wptRuns,
     f: "json"
   };

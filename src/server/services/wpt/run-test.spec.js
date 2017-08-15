@@ -8,7 +8,7 @@ const config = {
   wptUrl: "www.test.com",
   wptApiKey: "xyz",
   wptLocation: "ec2-ap-southeast-1:Chrome.Cable",
-  wptPingbackUrl: "www.pingback.com",
+  publicUrl: "http://www.pingback.com",
   wptRuns: 5
 };
 
@@ -68,7 +68,7 @@ describe("WptService - runTest", () => {
         url: "www.test.com",
         k: "xyz",
         location: "ec2-ap-southeast-1:Chrome.Cable",
-        pingback: "www.pingback.com",
+        pingback: "http://www.pingback.com/hooks/update",
         runs: 5,
         f: "json"
       }
