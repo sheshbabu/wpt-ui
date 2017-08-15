@@ -68,7 +68,7 @@ describe("WptService - runTest", () => {
         url: "www.test.com",
         k: "xyz",
         location: "ec2-ap-southeast-1:Chrome.Cable",
-        pingback: "http://www.pingback.com/hooks/update",
+        pingback: "http://www.pingback.com/webhook/update",
         runs: 5,
         f: "json"
       }

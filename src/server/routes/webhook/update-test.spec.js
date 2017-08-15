@@ -14,7 +14,7 @@ const config = {
 function mockRequest() {
   return httpMocks.createRequest({
     method: "GET",
-    url: "/hooks/update",
+    url: "/webhook/update",
     query: {
       id: 42
     }
@@ -29,7 +29,7 @@ function mockResponse() {
   return res;
 }
 
-describe("WptHooksRouter - updateTest", () => {
+describe("WebhookRouter - updateTest", () => {
   let updateTestRouteHandler, req, res, updateTestServiceStub;
 
   beforeEach(() => {
@@ -50,7 +50,7 @@ describe("WptHooksRouter - updateTest", () => {
     updateTestRouteHandler = null;
   });
 
-  it("should return 200 for GET /hooks/update", () => {
+  it("should return 200 for GET /webhook/update", () => {
     updateTestRouteHandler(req, res);
     const actualStatusCode = res.statusCode;
     const expectedStatusCode = 200;

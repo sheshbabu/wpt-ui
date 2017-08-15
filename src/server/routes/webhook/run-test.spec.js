@@ -2,7 +2,7 @@ const assert = require("assert");
 const proxyquire = require("proxyquire");
 const sinon = require("sinon");
 
-describe("WptHooksRouter - runTest", () => {
+describe("WebhookRouter - runTest", () => {
   let runTestRouteHandler, createTestApiRouteHandlerStub;
 
   beforeEach(() => {

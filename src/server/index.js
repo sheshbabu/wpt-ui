@@ -5,7 +5,7 @@ const compression = require("compression");
 const db = require("./util/db");
 const logger = require("./util/logger");
 const apiRouter = require("./routes/api");
-const wptHooksRouter = require("./routes/wpt-hooks");
+const webhookRouter = require("./routes/webhook");
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/hooks", wptHooksRouter);
+app.use("/webhook", webhookRouter);
 app.use("/api", apiRouter);
 
 app.use((err, req, res, next) => {

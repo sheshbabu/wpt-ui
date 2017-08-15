@@ -20,7 +20,7 @@ async function runTest(config) {
 }
 
 function getWptParams(config) {
-  const pingbackUrl = new URL("/hooks/update", config.publicUrl);
+  const pingbackUrl = new URL("/webhook/update", config.publicUrl);
   return {
     url: config.wptUrl,
     k: config.wptApiKey,
