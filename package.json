@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently --raw 'npm run start:server' 'npm run start:client'",
     "start:server": "NODE_ENV=development node -e 'require(\"./index\").start()' | bunyan",
-    "start:client": "react-scripts start",
+    "start:client": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "NODE_ENV=test mocha --recursive './!(node_modules|client)/**/*.spec.js'",
     "test:cov": "nyc npm test",
