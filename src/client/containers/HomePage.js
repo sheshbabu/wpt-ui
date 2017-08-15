@@ -2,6 +2,7 @@ import React from "react";
 import autobind from "react-autobind";
 import moment from "moment";
 import queryString from "query-string";
+import Snackbar from "material-ui/Snackbar";
 import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TableToolbar from "../components/TableToolbar";
@@ -18,7 +19,9 @@ export default class HomePage extends React.PureComponent {
       endDate: "",
       metric1: "fv_start_render",
       metric2: "fv_load_time",
-      selectedTests: []
+      selectedTests: [],
+      isSnackbarOpen: false,
+      snackbarMessage: ""
     };
   }
 
@@ -46,6 +49,13 @@ export default class HomePage extends React.PureComponent {
 
   startTest() {
     return fetch("/api/tests", { method: "POST" });
+  }
+
+  showSnackbar(message) {
+    this.setState({
+      isSnackbarOpen: true,
+      snackbarMessage: message
+    });
   }
 
   handleStartDateChange(event, date) {
@@ -77,6 +87,7 @@ export default class HomePage extends React.PureComponent {
   async handleStartNewTestClick() {
     await this.startTest();
     await this.fetchTests();
+    this.showSnackbar("Started new test");
   }
 
   handleCompareTestClick() {
@@ -85,6 +96,13 @@ export default class HomePage extends React.PureComponent {
     this.props.history.push(
       `/compare?test_id_1=${testId1}&test_id_2=${testId2}`
     );
+  }
+
+  handleSnackbarHide() {
+    this.setState({
+      isSnackbarOpen: false,
+      snackbarMessage: ""
+    });
   }
 
   render() {
@@ -124,6 +142,12 @@ export default class HomePage extends React.PureComponent {
           fields={getTableFields()}
           selectedTests={this.state.selectedTests}
           onRowSelection={this.handleRowSelection}
+        />
+        <Snackbar
+          open={this.state.isSnackbarOpen}
+          message="Started new test"
+          autoHideDuration={3000}
+          onRequestClose={this.handleSnackbarHide}
         />
       </div>
     );

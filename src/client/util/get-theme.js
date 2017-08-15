@@ -14,6 +14,10 @@ export default function getTheme() {
     },
     flatButton: {
       primaryTextColor: deepPurple600
+    },
+    snackbar: {
+      textColor: "white",
+      backgroundColor: "#323232"
     }
   });
 }
