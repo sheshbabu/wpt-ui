@@ -44,8 +44,8 @@ export default class HomePage extends React.PureComponent {
     this.setState({ tests });
   }
 
-  async startTest() {
-    await fetch("/api/tests", { method: "POST" });
+  startTest() {
+    return fetch("/api/tests", { method: "POST" });
   }
 
   handleStartDateChange(event, date) {
@@ -74,8 +74,9 @@ export default class HomePage extends React.PureComponent {
     this.setState({ selectedTests });
   }
 
-  handleStartNewTestClick() {
-    this.startTest();
+  async handleStartNewTestClick() {
+    await this.startTest();
+    await this.fetchTests();
   }
 
   handleCompareTestClick() {
