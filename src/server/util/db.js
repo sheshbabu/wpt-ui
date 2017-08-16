@@ -32,22 +32,9 @@ function seed() {
 }
 
 function getKnexConfig(config) {
-  let connection = {};
-
-  if (config.dbConnectionString) {
-    connection = config.dbConnectionString;
-  } else {
-    connection = {
-      host: config.dbHost,
-      user: config.dbUser,
-      password: config.dbPassword,
-      database: config.dbDatabase
-    };
-  }
-
   return {
     client: "pg",
-    connection
+    connection: config.dbConnectionString
   };
 }
 
