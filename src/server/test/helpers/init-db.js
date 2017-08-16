@@ -1,4 +1,7 @@
+const dotenv = require("dotenv");
 const db = require("../../util/db");
+
+dotenv.load();
 
 function initDb() {
   const config = {
