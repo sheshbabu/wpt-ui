@@ -44,8 +44,8 @@ function registerConfig(config) {
 
 async function initDb() {
   db.init(app.locals.config);
-  await db.seed();
   await db.runMigration();
+  await db.seed();
 }
 
 function startServer() {
