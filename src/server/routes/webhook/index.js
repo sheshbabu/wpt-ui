@@ -4,7 +4,7 @@ const updateTest = require("./update-test");
 
 const router = express.Router();
 
-router.use("/run", runTest);
-router.use("/update", updateTest);
+router.all("/run", runTest);
+router.all("/update", updateTest);
 
 module.exports = router;
