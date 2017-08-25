@@ -34,7 +34,13 @@ function getColumnHeaders(props) {
         <div style={{ color: "#666" }}>Metrics</div>
       </TableHeaderColumn>
       <TableHeaderColumn style={{ width: "25%" }}>
-        <div style={{ color: "#666" }}>
+        <div
+          style={{
+            color: "#666",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}
+        >
           {props.oldTest.test_id}
         </div>
         <TableCellSubText
@@ -44,7 +50,13 @@ function getColumnHeaders(props) {
         />
       </TableHeaderColumn>
       <TableHeaderColumn style={{ width: "25%" }}>
-        <div style={{ color: "#666" }}>
+        <div
+          style={{
+            color: "#666",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}
+        >
           {props.newTest.test_id}
         </div>
         <TableCellSubText
