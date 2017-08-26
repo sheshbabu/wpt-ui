@@ -1,11 +1,13 @@
 const BaseError = require("./BaseError");
+const StatusCodes = require("../../common/constants/StatusCodes.json");
 const ErrorCodes = require("../../common/constants/ErrorCodes.json");
 
 class EmptyWptReportsTableError extends BaseError {
   constructor() {
     const message = "No tests found in database";
     const errorCode = ErrorCodes.EMPTY_WPT_REPORTS_TABLE;
-    super(message, errorCode);
+    const statusCode = StatusCodes.NOT_FOUND;
+    super(message, errorCode, statusCode);
   }
 }
 

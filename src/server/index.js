@@ -6,6 +6,7 @@ const db = require("./util/db");
 const logger = require("./util/logger");
 const apiRouter = require("./routes/api");
 const webhookRouter = require("./routes/webhook");
+const StatusCodes = require("../common/constants/StatusCodes.json");
 
 const app = express();
 
@@ -23,8 +24,10 @@ app.use("/api", apiRouter);
 
 app.use((err, req, res, next) => {
   const message = err.message || "Oops! Something broke!";
+  const errorCode = err.errorCode || 0;
+  const statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   logger.error({ req, err });
-  res.status(500).send({ message });
+  res.status(statusCode).send({ message, errorCode });
 });
 
 async function start(config) {
