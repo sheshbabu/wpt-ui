@@ -2,7 +2,7 @@ const assert = require("assert");
 const getTests = require("./get-tests.js");
 const db = require("../../util/db");
 const initDb = require("../../test/helpers/init-db");
-const NoTestsFoundError = require("../../errors/NoTestsFoundError");
+const EmptyWptReportsTableError = require("../../errors/EmptyWptReportsTableError");
 
 initDb();
 
@@ -24,12 +24,12 @@ describe("WptDao - getTests", () => {
     assert.strictEqual(rows.length, 6);
   });
 
-  it("should throw a NoTestsFoundError if table is empty", async () => {
+  it("should throw a EmptyWptReportsTableError if table is empty", async () => {
     await knex("wpt_reports").del();
     try {
       await getTests();
     } catch (error) {
-      assert(error instanceof NoTestsFoundError);
+      assert(error instanceof EmptyWptReportsTableError);
     }
   });
 });

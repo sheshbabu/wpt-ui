@@ -1,15 +1,15 @@
 const db = require("../../util/db");
-const NoTestsFoundError = require("../../errors/NoTestsFoundError");
+const EmptyWptReportsTableError = require("../../errors/EmptyWptReportsTableError");
 
 async function getTests() {
   const knex = db.getKnex();
   const rows = await knex("wpt_reports")
     .orderBy("created_at", "desc")
     .limit(10);
-  if (rows) {
+  if (rows.length) {
     return rows;
   } else {
-    throw new NoTestsFoundError();
+    throw new EmptyWptReportsTableError();
   }
 }
 
