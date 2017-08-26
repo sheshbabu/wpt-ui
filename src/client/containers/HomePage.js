@@ -2,12 +2,15 @@ import React from "react";
 import autobind from "react-autobind";
 import moment from "moment";
 import queryString from "query-string";
+import fetchWrapper from "../util/fetch-wrapper";
 import Snackbar from "material-ui/Snackbar";
 import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TableToolbar from "../components/TableToolbar";
 import TestsTable from "../components/TestsTable";
+import ErrorState from "../components/ErrorState";
 import FIELDS from "../constants/fields.json";
+import ErrorCodes from "../../common/constants/ErrorCodes.json";
 
 export default class HomePage extends React.PureComponent {
   constructor() {
@@ -21,7 +24,11 @@ export default class HomePage extends React.PureComponent {
       metric2: "fv_load_time",
       selectedTests: [],
       isSnackbarOpen: false,
-      snackbarMessage: ""
+      snackbarMessage: "",
+      isWptReportsTableEmpty: false,
+      isNoTestsFoundForFilter: false,
+      errorCode: 0,
+      errorMessage: ""
     };
   }
 
@@ -42,9 +49,32 @@ export default class HomePage extends React.PureComponent {
       return;
     }
 
-    const response = await fetch(url);
-    const tests = await response.json();
-    this.setState({ tests });
+    try {
+      const tests = await fetchWrapper(url);
+      this.setState({
+        tests,
+        isWptReportsTableEmpty: false,
+        isNoTestsFoundForFilter: false
+      });
+    } catch (error) {
+      if (error.errorCode === ErrorCodes.EMPTY_WPT_REPORTS_TABLE) {
+        this.setState({
+          tests: [],
+          isWptReportsTableEmpty: true,
+          isNoTestsFoundForFilter: false,
+          errorCode: error.errorCode,
+          errorMessage: error.message
+        });
+      } else if (error.errorCode === ErrorCodes.NO_TESTS_FOUND) {
+        this.setState({
+          tests: [],
+          isWptReportsTableEmpty: false,
+          isNoTestsFoundForFilter: true,
+          errorCode: error.errorCode,
+          errorMessage: error.message
+        });
+      }
+    }
   }
 
   startTest() {
@@ -105,7 +135,44 @@ export default class HomePage extends React.PureComponent {
     });
   }
 
+  getErrorState() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: 20
+        }}
+      >
+        <FilterToolbar
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          metric1={this.state.metric1}
+          metric2={this.state.metric2}
+          onStartDateChange={this.handleStartDateChange}
+          onEndDateChange={this.handleEndDateChange}
+          onMetric1Change={this.handleMetric1Change}
+          onMetric2Change={this.handleMetric2Change}
+          fields={getComparableFields()}
+        />
+        <ErrorState
+          errorCode={this.state.errorCode}
+          errorMessage={this.state.errorMessage}
+        />
+      </div>
+    );
+  }
+
   render() {
+    if (this.state.isWptReportsTableEmpty) {
+      return this.getErrorState();
+    }
+
+    if (this.state.isNoTestsFoundForFilter) {
+      return this.getErrorState();
+    }
+
     return (
       <div
         style={{
