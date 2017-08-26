@@ -2,7 +2,7 @@ const assert = require("assert");
 const getTestsWithinDateRange = require("./get-tests-within-date-range");
 const db = require("../../util/db");
 const initDb = require("../../test/helpers/init-db");
-const NoTestsFoundError = require("../../errors/NoTestsFoundError");
+const NoTestsFoundForDateRangeError = require("../../errors/NoTestsFoundForDateRangeError");
 
 initDb();
 
@@ -27,13 +27,13 @@ describe("WptDao - getTestsWithinDateRange", () => {
     assert.strictEqual(rows[2].test_id, "170709_CC_CMPL");
   });
 
-  it("should throw a NoTestsFoundError if no tests exist within the date range", async () => {
+  it("should throw a NoTestsFoundForDateRangeError if no tests exist within the date range", async () => {
     try {
       const startDate = "2018-09-07";
       const endDate = "2018-10-30";
       await getTestsWithinDateRange(startDate, endDate);
     } catch (error) {
-      assert(error instanceof NoTestsFoundError);
+      assert(error instanceof NoTestsFoundForDateRangeError);
     }
   });
 });

@@ -1,5 +1,5 @@
 const db = require("../../util/db");
-const NoTestsFoundError = require("../../errors/NoTestsFoundError");
+const NoTestsFoundForDateRangeError = require("../../errors/NoTestsFoundForDateRangeError");
 
 async function getTestsWithinDateRange(startDate, endDate) {
   const knex = db.getKnex();
@@ -9,7 +9,7 @@ async function getTestsWithinDateRange(startDate, endDate) {
   if (rows.length) {
     return rows;
   } else {
-    throw new NoTestsFoundError();
+    throw new NoTestsFoundForDateRangeError();
   }
 }
 
