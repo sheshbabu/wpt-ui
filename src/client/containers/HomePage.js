@@ -26,7 +26,7 @@ export default class HomePage extends React.PureComponent {
       isSnackbarOpen: false,
       snackbarMessage: "",
       isWptReportsTableEmpty: false,
-      isNoTestsFoundForFilter: false,
+      isNoTestsFoundForDateRange: false,
       errorCode: 0,
       errorMessage: ""
     };
@@ -54,22 +54,22 @@ export default class HomePage extends React.PureComponent {
       this.setState({
         tests,
         isWptReportsTableEmpty: false,
-        isNoTestsFoundForFilter: false
+        isNoTestsFoundForDateRange: false
       });
     } catch (error) {
       if (error.errorCode === ErrorCodes.EMPTY_WPT_REPORTS_TABLE) {
         this.setState({
           tests: [],
           isWptReportsTableEmpty: true,
-          isNoTestsFoundForFilter: false,
+          isNoTestsFoundForDateRange: false,
           errorCode: error.errorCode,
           errorMessage: error.message
         });
-      } else if (error.errorCode === ErrorCodes.NO_TESTS_FOUND) {
+      } else if (error.errorCode === ErrorCodes.NO_TESTS_FOUND_FOR_DATE_RANGE) {
         this.setState({
           tests: [],
           isWptReportsTableEmpty: false,
-          isNoTestsFoundForFilter: true,
+          isNoTestsFoundForDateRange: true,
           errorCode: error.errorCode,
           errorMessage: error.message
         });
@@ -169,7 +169,7 @@ export default class HomePage extends React.PureComponent {
       return this.getErrorState();
     }
 
-    if (this.state.isNoTestsFoundForFilter) {
+    if (this.state.isNoTestsFoundForDateRange) {
       return this.getErrorState();
     }
 
