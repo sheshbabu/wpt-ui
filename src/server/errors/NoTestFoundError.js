@@ -1,9 +1,11 @@
 const BaseError = require("./BaseError");
+const ErrorCodes = require("../../common/constants/ErrorCodes.json");
 
 class NoTestFoundError extends BaseError {
   constructor(testId) {
     const message = `Test with testId ${testId} not found`;
-    super(message);
+    const errorCode = ErrorCodes.NO_TEST_FOUND;
+    super(message, errorCode);
   }
 }
 
