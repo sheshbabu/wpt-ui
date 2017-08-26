@@ -25,7 +25,7 @@ export default class HomePage extends React.PureComponent {
       selectedTests: [],
       isSnackbarOpen: false,
       snackbarMessage: "",
-      isWptReportsTableEmpty: false,
+      isNoTestsCreated: false,
       isNoTestsFoundForDateRange: false,
       errorCode: 0,
       errorMessage: ""
@@ -53,14 +53,14 @@ export default class HomePage extends React.PureComponent {
       const tests = await fetchWrapper(url);
       this.setState({
         tests,
-        isWptReportsTableEmpty: false,
+        isNoTestsCreated: false,
         isNoTestsFoundForDateRange: false
       });
     } catch (error) {
-      if (error.errorCode === ErrorCodes.EMPTY_WPT_REPORTS_TABLE) {
+      if (error.errorCode === ErrorCodes.NO_TEST_CREATED) {
         this.setState({
           tests: [],
-          isWptReportsTableEmpty: true,
+          isNoTestsCreated: true,
           isNoTestsFoundForDateRange: false,
           errorCode: error.errorCode,
           errorMessage: error.message
@@ -68,7 +68,7 @@ export default class HomePage extends React.PureComponent {
       } else if (error.errorCode === ErrorCodes.NO_TESTS_FOUND_FOR_DATE_RANGE) {
         this.setState({
           tests: [],
-          isWptReportsTableEmpty: false,
+          isNoTestsCreated: false,
           isNoTestsFoundForDateRange: true,
           errorCode: error.errorCode,
           errorMessage: error.message
@@ -165,7 +165,7 @@ export default class HomePage extends React.PureComponent {
   }
 
   render() {
-    if (this.state.isWptReportsTableEmpty) {
+    if (this.state.isNoTestsCreated) {
       return this.getErrorState();
     }
 

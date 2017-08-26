@@ -1,5 +1,5 @@
 const db = require("../../util/db");
-const EmptyWptReportsTableError = require("../../errors/EmptyWptReportsTableError");
+const NoTestsCreatedError = require("../../errors/NoTestsCreatedError");
 
 async function getTests() {
   const knex = db.getKnex();
@@ -9,7 +9,7 @@ async function getTests() {
   if (rows.length) {
     return rows;
   } else {
-    throw new EmptyWptReportsTableError();
+    throw new NoTestsCreatedError();
   }
 }
 
