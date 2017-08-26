@@ -6,7 +6,7 @@ async function getTestsWithinDateRange(startDate, endDate) {
   const rows = await knex("wpt_reports")
     .whereBetween("created_at", [startDate, endDate])
     .orderBy("created_at", "desc");
-  if (rows) {
+  if (rows.length) {
     return rows;
   } else {
     throw new NoTestsFoundError();

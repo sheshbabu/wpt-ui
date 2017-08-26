@@ -6,7 +6,7 @@ async function getMultipleTests(testIds) {
   const rows = await knex("wpt_reports")
     .whereIn("test_id", testIds)
     .orderBy("created_at", "desc");
-  if (rows) {
+  if (rows.length) {
     return rows;
   } else {
     throw new NoTestsFoundError();
