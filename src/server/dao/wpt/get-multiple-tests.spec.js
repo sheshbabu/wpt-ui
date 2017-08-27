@@ -2,6 +2,7 @@ const assert = require("assert");
 const getMultipleTests = require("./get-multiple-tests");
 const db = require("../../util/db");
 const initDb = require("../../test/helpers/init-db");
+const NoTestFoundError = require("../../errors/NoTestFoundError");
 const NoTestsFoundError = require("../../errors/NoTestsFoundError");
 
 initDb();
@@ -25,7 +26,16 @@ describe("WptDao - getMultipleTests", () => {
     assert.strictEqual(rows[1].test_id, "170608_AA_CMPL");
   });
 
-  it("should throw a NoTestsFoundError if no tests exist within the date range", async () => {
+  it("should throw a NoTestFoundError if some of the tests are not found for the provided testIds", async () => {
+    try {
+      const testIds = ["170709_CC_CMPL", "170709_CC_CMPL_XXX_2000"];
+      await getMultipleTests(testIds);
+    } catch (error) {
+      assert(error instanceof NoTestFoundError);
+    }
+  });
+
+  it("should throw a NoTestsFoundError if no tests are found for the provided testIds", async () => {
     try {
       const testIds = ["170608_AA_CMPL_XXX_1000", "170709_CC_CMPL_XXX_2000"];
       await getMultipleTests(testIds);
