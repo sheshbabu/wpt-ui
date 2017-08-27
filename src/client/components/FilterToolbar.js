@@ -1,5 +1,6 @@
 import React from "react";
 import Paper from "material-ui/Paper";
+import moment from "moment";
 import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
 import DatePicker from "material-ui/DatePicker";
 import SelectField from "material-ui/SelectField";
@@ -29,10 +30,12 @@ export default function FilterToolbar(props) {
           <DateField
             floatingLabelText="Start Date"
             onChange={props.onStartDateChange}
+            value={props.startDate}
           />
           <DateField
             floatingLabelText="End Date"
             onChange={props.onEndDateChange}
+            value={props.endDate}
           />
         </ToolbarGroup>
       </Toolbar>
@@ -77,10 +80,12 @@ function MetricsSelectField(props) {
 }
 
 function DateField(props) {
+  const value = props.value ? moment(props.value).toDate() : null;
   return (
     <DatePicker
       floatingLabelText={props.floatingLabelText}
-      floatingLabelFixed={true}
+      floatingLabelFixed
+      value={value}
       hintText="Select"
       container="inline"
       mode="landscape"

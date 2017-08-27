@@ -32,7 +32,26 @@ export default class HomePage extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.fetchTests();
+    this.setStateFromLocation();
+  }
+
+  componentWillReceiveProps() {
+    this.setStateFromLocation();
+  }
+
+  setStateFromLocation() {
+    const queryParams = queryString.parse(window.location.search);
+    let { startDate, endDate } = this.state;
+
+    if (queryParams.start_date && queryParams.start_date !== startDate) {
+      startDate = queryParams.start_date;
+    }
+
+    if (queryParams.end_date && queryParams.end_date !== endDate) {
+      endDate = queryParams.end_date;
+    }
+
+    this.setState({ startDate, endDate }, this.fetchTests);
   }
 
   async fetchTests() {
@@ -81,13 +100,17 @@ export default class HomePage extends React.PureComponent {
   }
 
   handleStartDateChange(event, date) {
-    this.setState({ startDate: moment(date).format("YYYY-MM-DD") });
-    this.fetchTests();
+    const queryParams = queryString.parse(window.location.search);
+    const formattedDate = moment(date).format("YYYY-MM-DD");
+    queryParams.start_date = formattedDate;
+    this.props.history.push(`/?${queryString.stringify(queryParams)}`);
   }
 
   handleEndDateChange(event, date) {
-    this.setState({ endDate: moment(date).format("YYYY-MM-DD") });
-    this.fetchTests();
+    const queryParams = queryString.parse(window.location.search);
+    const formattedDate = moment(date).format("YYYY-MM-DD");
+    queryParams.end_date = formattedDate;
+    this.props.history.push(`/?${queryString.stringify(queryParams)}`);
   }
 
   handleMetric1Change(event, index, value) {
