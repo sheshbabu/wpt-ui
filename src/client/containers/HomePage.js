@@ -25,8 +25,7 @@ export default class HomePage extends React.PureComponent {
       selectedTests: [],
       isSnackbarOpen: false,
       snackbarMessage: "",
-      isNoTestsCreated: false,
-      isNoTestsFoundForDateRange: false,
+      isError: false,
       errorCode: 0,
       errorMessage: ""
     };
@@ -53,23 +52,16 @@ export default class HomePage extends React.PureComponent {
       const tests = await fetchWrapper(url);
       this.setState({
         tests,
-        isNoTestsCreated: false,
-        isNoTestsFoundForDateRange: false
+        isError: false
       });
     } catch (error) {
-      if (error.errorCode === ErrorCodes.NO_TEST_CREATED) {
+      if (
+        error.errorCode === ErrorCodes.NO_TEST_CREATED ||
+        error.errorCode === ErrorCodes.NO_TESTS_FOUND_FOR_DATE_RANGE
+      ) {
         this.setState({
           tests: [],
-          isNoTestsCreated: true,
-          isNoTestsFoundForDateRange: false,
-          errorCode: error.errorCode,
-          errorMessage: error.message
-        });
-      } else if (error.errorCode === ErrorCodes.NO_TESTS_FOUND_FOR_DATE_RANGE) {
-        this.setState({
-          tests: [],
-          isNoTestsCreated: false,
-          isNoTestsFoundForDateRange: true,
+          isError: true,
           errorCode: error.errorCode,
           errorMessage: error.message
         });
@@ -165,11 +157,7 @@ export default class HomePage extends React.PureComponent {
   }
 
   render() {
-    if (this.state.isNoTestsCreated) {
-      return this.getErrorState();
-    }
-
-    if (this.state.isNoTestsFoundForDateRange) {
+    if (this.state.isError) {
       return this.getErrorState();
     }
 
