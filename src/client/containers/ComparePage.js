@@ -3,6 +3,7 @@ import moment from "moment";
 import queryString from "query-string";
 import CompareTable from "../components/CompareTable";
 import fetchWrapper from "../util/fetch-wrapper";
+import ErrorSection from "../components/ErrorSection";
 import FIELDS from "../constants/fields.json";
 
 export default class ComparePage extends React.Component {
@@ -10,7 +11,10 @@ export default class ComparePage extends React.Component {
     super();
     this.state = {
       oldTest: null,
-      newTest: null
+      newTest: null,
+      isError: false,
+      errorCode: 0,
+      errorMessage: ""
     };
   }
 
@@ -25,23 +29,52 @@ export default class ComparePage extends React.Component {
 
   async fetchTests(testId1, testId2) {
     const url = `/api/tests?test_id=${testId1},${testId2}`;
-    const tests = await fetchWrapper(url);
 
-    if (moment(tests[0].created_at).isBefore(tests[1].created_at)) {
+    try {
+      const tests = await fetchWrapper(url);
+      let oldTest, newTest;
+
+      if (moment(tests[0].created_at).isBefore(tests[1].created_at)) {
+        oldTest = tests[0];
+        newTest = tests[1];
+      } else {
+        oldTest = tests[1];
+        newTest = tests[0];
+      }
+      this.setState({ oldTest, newTest, isError: false });
+    } catch (error) {
       this.setState({
-        oldTest: tests[0],
-        newTest: tests[1]
-      });
-    } else {
-      this.setState({
-        oldTest: tests[1],
-        newTest: tests[0]
+        isError: true,
+        errorCode: error.errorCode,
+        errorMessage: error.message
       });
     }
   }
 
+  getErrorSection() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: 20
+        }}
+      >
+        <ErrorSection
+          errorCode={this.state.errorCode}
+          errorMessage={this.state.errorMessage}
+        />
+      </div>
+    );
+  }
+
   render() {
-    const { oldTest, newTest } = this.state;
+    const { oldTest, newTest, isError } = this.state;
+
+    if (isError) {
+      return this.getErrorSection();
+    }
 
     if (!oldTest || !newTest) {
       return null;
