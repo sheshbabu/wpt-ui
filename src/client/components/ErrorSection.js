@@ -1,7 +1,7 @@
 import React from "react";
 import Warning from "material-ui/svg-icons/alert/warning";
 
-export default function ErrorState(props) {
+export default function ErrorSection(props) {
   return (
     <div
       style={{

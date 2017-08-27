@@ -8,7 +8,7 @@ import FilterToolbar from "../components/FilterToolbar";
 import BarChart from "../components/BarChart";
 import TableToolbar from "../components/TableToolbar";
 import TestsTable from "../components/TestsTable";
-import ErrorState from "../components/ErrorState";
+import ErrorSection from "../components/ErrorSection";
 import FIELDS from "../constants/fields.json";
 import ErrorCodes from "../../common/constants/ErrorCodes.json";
 
@@ -127,7 +127,7 @@ export default class HomePage extends React.PureComponent {
     });
   }
 
-  getErrorState() {
+  getErrorSection() {
     return (
       <div
         style={{
@@ -148,7 +148,7 @@ export default class HomePage extends React.PureComponent {
           onMetric2Change={this.handleMetric2Change}
           fields={getComparableFields()}
         />
-        <ErrorState
+        <ErrorSection
           errorCode={this.state.errorCode}
           errorMessage={this.state.errorMessage}
         />
@@ -158,7 +158,7 @@ export default class HomePage extends React.PureComponent {
 
   render() {
     if (this.state.isError) {
-      return this.getErrorState();
+      return this.getErrorSection();
     }
 
     return (
