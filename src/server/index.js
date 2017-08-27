@@ -23,7 +23,7 @@ app.use("/webhook", webhookRouter);
 app.use("/api", apiRouter);
 
 app.use((err, req, res, next) => {
-  const message = err.message || "Oops! Something broke!";
+  const message = err.message || "Something went wrong!";
   const errorCode = err.errorCode || 0;
   const statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   logger.error({ req, err });
