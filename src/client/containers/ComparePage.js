@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import queryString from "query-string";
 import CompareTable from "../components/CompareTable";
+import fetchWrapper from "../util/fetch-wrapper";
 import FIELDS from "../constants/fields.json";
 
 export default class ComparePage extends React.Component {
@@ -24,8 +25,7 @@ export default class ComparePage extends React.Component {
 
   async fetchTests(testId1, testId2) {
     const url = `/api/tests?test_id=${testId1},${testId2}`;
-    const response = await fetch(url);
-    const tests = await response.json();
+    const tests = await fetchWrapper(url);
 
     if (moment(tests[0].created_at).isBefore(tests[1].created_at)) {
       this.setState({
