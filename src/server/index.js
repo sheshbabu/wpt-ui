@@ -57,6 +57,14 @@ function startServer() {
   app.listen(port);
 }
 
+function stopServer(err) {
+  logger.error({ err });
+  process.exit();
+}
+
+process.on("uncaughtException", stopServer);
+process.on("unhandledRejection", stopServer);
+
 module.exports = {
   start
 };
