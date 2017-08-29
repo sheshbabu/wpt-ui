@@ -12,7 +12,7 @@ import ErrorSection from "../components/ErrorSection";
 import FIELDS from "../constants/fields.json";
 import ErrorCodes from "../../common/constants/ErrorCodes.json";
 
-export default class HomePage extends React.PureComponent {
+export default class ListPage extends React.PureComponent {
   constructor() {
     super();
     autobind(this);
