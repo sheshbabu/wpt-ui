@@ -32,14 +32,20 @@ export default class HomePage extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.setStateFromLocation();
+    if (this.isFilterPresentInUrl()) {
+      this.setFilterStatesFromUrl();
+    } else {
+      this.fetchTests();
+    }
   }
 
   componentWillReceiveProps() {
-    this.setStateFromLocation();
+    if (this.isFilterPresentInUrl()) {
+      this.setFilterStatesFromUrl();
+    }
   }
 
-  setStateFromLocation() {
+  setFilterStatesFromUrl() {
     const queryParams = queryString.parse(window.location.search);
     let { startDate, endDate } = this.state;
 
@@ -52,6 +58,11 @@ export default class HomePage extends React.PureComponent {
     }
 
     this.setState({ startDate, endDate }, this.fetchTests);
+  }
+
+  isFilterPresentInUrl() {
+    const queryParams = queryString.parse(window.location.search);
+    return queryParams.start_date || queryParams.end_date;
   }
 
   async fetchTests() {
